@@ -1,0 +1,10 @@
+# Local system and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
