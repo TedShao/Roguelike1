@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = "S05"
+display_name = "开溜"
+description = "沿空格路径移动最多 2 格，落点须可见。冷却 2。"
+damage = 0
+damage_type = "none"
+reach = 2
+cooldown = 2
+push_distance = 0
+collision_damage = 0
+protection = 0
+protection_responses = 0
+path_limit = 0

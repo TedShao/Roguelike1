@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/enemy_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = "chaser"
+display_name = "跟风者"
+max_health = 10
+damage = 3
+reach = 1
+pressure = 0
+description = "相邻攻击 3，否则移动一格。移动不附带攻击。"

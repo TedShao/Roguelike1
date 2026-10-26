@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/enemy_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = "heavy"
+display_name = "抬杠者"
+max_health = 18
+damage = 8
+reach = 3
+pressure = 0
+description = "同一直线 3 格内蓄力；下次响应打锁定三格 8 伤害，再恢复一次。被实际推移可打断。"

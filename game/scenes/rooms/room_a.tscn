@@ -1,0 +1,385 @@
+[gd_scene format=3 uid="uid://3qck1b51piap"]
+
+[ext_resource type="Script" uid="uid://loebytmf8eyd" path="res://game/scripts/fixed_room.gd" id="1"]
+[ext_resource type="Resource" path="res://game/data/rules.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://bpgoy57muaaj0" path="res://game/art/prototype/floor.svg" id="3"]
+[ext_resource type="PackedScene" path="res://game/scenes/props/wall.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://game/scenes/props/exit_gate.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/player.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/chaser.tscn" id="7"]
+[ext_resource type="Theme" path="res://game/ui/theme.tres" id="10"]
+
+[sub_resource type="RectangleShape2D" id="Bounds"]
+resource_local_to_scene = true
+size = Vector2(476, 476)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q6p4"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic783"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kc2xe"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m23d"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npngn"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmr7l"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8hgd"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tk3bv"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjbyx"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvxgv"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d537m"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6eubj"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axb28"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krkue"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_movvt"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyqap"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pddgb"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smrv6"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08m51"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vx3gw"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4niko"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prvcx"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyrt1"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anql0"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hljdy"]
+resource_local_to_scene = true
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgpsw"]
+resource_local_to_scene = true
+size = Vector2(52, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bylxk"]
+resource_local_to_scene = true
+size = Vector2(52, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47udk"]
+resource_local_to_scene = true
+size = Vector2(52, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oiqb1"]
+resource_local_to_scene = true
+size = Vector2(92, 100)
+
+[node name="RoomA" type="Node2D" unique_id=994067504]
+script = ExtResource("1")
+encounter_note = "墙角提供碰撞机会；也可以用任何基础能力处理敌人。"
+rules = ExtResource("2")
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=1992027890]
+show_behind_parent = true
+texture_repeat = 2
+texture = ExtResource("3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 476, 476)
+
+[node name="GridOrigin" type="Marker2D" parent="." unique_id=1223095712]
+position = Vector2(34, 34)
+
+[node name="MapBounds" type="Area2D" parent="." unique_id=446400350]
+position = Vector2(238, 238)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBounds" unique_id=1818660016]
+shape = SubResource("Bounds")
+
+[node name="Walls" type="Node2D" parent="." unique_id=776301360]
+
+[node name="Wall_0_0" parent="Walls" unique_id=1269345925 instance=ExtResource("4")]
+position = Vector2(34, 34)
+
+[node name="CollisionShape2D" parent="Walls/Wall_0_0" index="1"]
+shape = SubResource("RectangleShape2D_8q6p4")
+
+[node name="Wall_1_0" parent="Walls" unique_id=1095324427 instance=ExtResource("4")]
+position = Vector2(102, 34)
+
+[node name="CollisionShape2D" parent="Walls/Wall_1_0" index="1"]
+shape = SubResource("RectangleShape2D_ic783")
+
+[node name="Wall_2_0" parent="Walls" unique_id=1747752946 instance=ExtResource("4")]
+position = Vector2(170, 34)
+
+[node name="CollisionShape2D" parent="Walls/Wall_2_0" index="1"]
+shape = SubResource("RectangleShape2D_kc2xe")
+
+[node name="Wall_3_0" parent="Walls" unique_id=1156884744 instance=ExtResource("4")]
+position = Vector2(238, 34)
+
+[node name="CollisionShape2D" parent="Walls/Wall_3_0" index="1"]
+shape = SubResource("RectangleShape2D_4m23d")
+
+[node name="Wall_4_0" parent="Walls" unique_id=1384288188 instance=ExtResource("4")]
+position = Vector2(306, 34)
+
+[node name="CollisionShape2D" parent="Walls/Wall_4_0" index="1"]
+shape = SubResource("RectangleShape2D_npngn")
+
+[node name="Wall_5_0" parent="Walls" unique_id=2067824506 instance=ExtResource("4")]
+position = Vector2(374, 34)
+
+[node name="CollisionShape2D" parent="Walls/Wall_5_0" index="1"]
+shape = SubResource("RectangleShape2D_gmr7l")
+
+[node name="Wall_6_0" parent="Walls" unique_id=1532630962 instance=ExtResource("4")]
+position = Vector2(442, 34)
+
+[node name="CollisionShape2D" parent="Walls/Wall_6_0" index="1"]
+shape = SubResource("RectangleShape2D_q8hgd")
+
+[node name="Wall_0_1" parent="Walls" unique_id=1263037735 instance=ExtResource("4")]
+position = Vector2(34, 102)
+
+[node name="CollisionShape2D" parent="Walls/Wall_0_1" index="1"]
+shape = SubResource("RectangleShape2D_tk3bv")
+
+[node name="Wall_6_1" parent="Walls" unique_id=1524159485 instance=ExtResource("4")]
+position = Vector2(442, 102)
+
+[node name="CollisionShape2D" parent="Walls/Wall_6_1" index="1"]
+shape = SubResource("RectangleShape2D_vjbyx")
+
+[node name="Wall_0_2" parent="Walls" unique_id=1918768454 instance=ExtResource("4")]
+position = Vector2(34, 170)
+
+[node name="CollisionShape2D" parent="Walls/Wall_0_2" index="1"]
+shape = SubResource("RectangleShape2D_xvxgv")
+
+[node name="Wall_6_2" parent="Walls" unique_id=1033105992 instance=ExtResource("4")]
+position = Vector2(442, 170)
+
+[node name="CollisionShape2D" parent="Walls/Wall_6_2" index="1"]
+shape = SubResource("RectangleShape2D_d537m")
+
+[node name="Wall_0_3" parent="Walls" unique_id=803372238 instance=ExtResource("4")]
+position = Vector2(34, 238)
+
+[node name="CollisionShape2D" parent="Walls/Wall_0_3" index="1"]
+shape = SubResource("RectangleShape2D_6eubj")
+
+[node name="Wall_6_3" parent="Walls" unique_id=878919866 instance=ExtResource("4")]
+position = Vector2(442, 238)
+
+[node name="CollisionShape2D" parent="Walls/Wall_6_3" index="1"]
+shape = SubResource("RectangleShape2D_axb28")
+
+[node name="Wall_0_4" parent="Walls" unique_id=144994192 instance=ExtResource("4")]
+position = Vector2(34, 306)
+
+[node name="CollisionShape2D" parent="Walls/Wall_0_4" index="1"]
+shape = SubResource("RectangleShape2D_krkue")
+
+[node name="Wall_6_4" parent="Walls" unique_id=257501663 instance=ExtResource("4")]
+position = Vector2(442, 306)
+
+[node name="CollisionShape2D" parent="Walls/Wall_6_4" index="1"]
+shape = SubResource("RectangleShape2D_movvt")
+
+[node name="Wall_0_5" parent="Walls" unique_id=1163856117 instance=ExtResource("4")]
+position = Vector2(34, 374)
+
+[node name="CollisionShape2D" parent="Walls/Wall_0_5" index="1"]
+shape = SubResource("RectangleShape2D_pyqap")
+
+[node name="Wall_6_5" parent="Walls" unique_id=998069844 instance=ExtResource("4")]
+position = Vector2(442, 374)
+
+[node name="CollisionShape2D" parent="Walls/Wall_6_5" index="1"]
+shape = SubResource("RectangleShape2D_pddgb")
+
+[node name="Wall_0_6" parent="Walls" unique_id=53501809 instance=ExtResource("4")]
+position = Vector2(34, 442)
+
+[node name="CollisionShape2D" parent="Walls/Wall_0_6" index="1"]
+shape = SubResource("RectangleShape2D_smrv6")
+
+[node name="Wall_1_6" parent="Walls" unique_id=1880140733 instance=ExtResource("4")]
+position = Vector2(102, 442)
+
+[node name="CollisionShape2D" parent="Walls/Wall_1_6" index="1"]
+shape = SubResource("RectangleShape2D_08m51")
+
+[node name="Wall_2_6" parent="Walls" unique_id=1705937640 instance=ExtResource("4")]
+position = Vector2(170, 442)
+
+[node name="CollisionShape2D" parent="Walls/Wall_2_6" index="1"]
+shape = SubResource("RectangleShape2D_vx3gw")
+
+[node name="Wall_3_6" parent="Walls" unique_id=730726061 instance=ExtResource("4")]
+position = Vector2(238, 442)
+
+[node name="CollisionShape2D" parent="Walls/Wall_3_6" index="1"]
+shape = SubResource("RectangleShape2D_4niko")
+
+[node name="Wall_4_6" parent="Walls" unique_id=50526876 instance=ExtResource("4")]
+position = Vector2(306, 442)
+
+[node name="CollisionShape2D" parent="Walls/Wall_4_6" index="1"]
+shape = SubResource("RectangleShape2D_prvcx")
+
+[node name="Wall_5_6" parent="Walls" unique_id=341909871 instance=ExtResource("4")]
+position = Vector2(374, 442)
+
+[node name="CollisionShape2D" parent="Walls/Wall_5_6" index="1"]
+shape = SubResource("RectangleShape2D_iyrt1")
+
+[node name="Wall_6_6" parent="Walls" unique_id=2046662989 instance=ExtResource("4")]
+position = Vector2(442, 442)
+
+[node name="CollisionShape2D" parent="Walls/Wall_6_6" index="1"]
+shape = SubResource("RectangleShape2D_anql0")
+
+[node name="Wall_5_3" parent="Walls" unique_id=1215627221 instance=ExtResource("4")]
+position = Vector2(374, 238)
+
+[node name="CollisionShape2D" parent="Walls/Wall_5_3" index="1"]
+shape = SubResource("RectangleShape2D_hljdy")
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1809109836]
+position = Vector2(170, 238)
+
+[node name="Player" parent="PlayerSpawn" unique_id=1901441939 instance=ExtResource("6")]
+
+[node name="CollisionShape2D" parent="PlayerSpawn/Player/SelectionArea" index="0"]
+shape = SubResource("RectangleShape2D_rgpsw")
+
+[node name="AnimationPlayer" parent="PlayerSpawn/Player" index="4"]
+autoplay = &"idle"
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1425568691]
+
+[node name="Chaser1" parent="Enemies" unique_id=936742560 instance=ExtResource("7")]
+position = Vector2(306, 170)
+
+[node name="CollisionShape2D" parent="Enemies/Chaser1/SelectionArea" index="0"]
+shape = SubResource("RectangleShape2D_bylxk")
+
+[node name="AnimationPlayer" parent="Enemies/Chaser1" index="4"]
+autoplay = &"idle"
+
+[node name="Chaser2" parent="Enemies" unique_id=498416930 instance=ExtResource("7")]
+position = Vector2(238, 238)
+
+[node name="CollisionShape2D" parent="Enemies/Chaser2/SelectionArea" index="0"]
+shape = SubResource("RectangleShape2D_47udk")
+
+[node name="AnimationPlayer" parent="Enemies/Chaser2" index="4"]
+autoplay = &"idle"
+
+[node name="Props" type="Node2D" parent="." unique_id=936013044]
+
+[node name="ExitGate" parent="Props" unique_id=2012527530 instance=ExtResource("5")]
+position = Vector2(548, 352)
+
+[node name="CollisionShape2D" parent="Props/ExitGate/InteractionArea" index="0"]
+shape = SubResource("RectangleShape2D_oiqb1")
+
+[node name="ExitCaption" type="Label" parent="Props/ExitGate" unique_id=432859362]
+offset_left = -64.0
+offset_top = -74.0
+offset_right = 64.0
+offset_bottom = -50.0
+theme = ExtResource("10")
+theme_override_font_sizes/font_size = 13
+text = "前往下一房"
+horizontal_alignment = 1
+
+[editable path="Walls/Wall_0_0"]
+[editable path="Walls/Wall_1_0"]
+[editable path="Walls/Wall_2_0"]
+[editable path="Walls/Wall_3_0"]
+[editable path="Walls/Wall_4_0"]
+[editable path="Walls/Wall_5_0"]
+[editable path="Walls/Wall_6_0"]
+[editable path="Walls/Wall_0_1"]
+[editable path="Walls/Wall_6_1"]
+[editable path="Walls/Wall_0_2"]
+[editable path="Walls/Wall_6_2"]
+[editable path="Walls/Wall_0_3"]
+[editable path="Walls/Wall_6_3"]
+[editable path="Walls/Wall_0_4"]
+[editable path="Walls/Wall_6_4"]
+[editable path="Walls/Wall_0_5"]
+[editable path="Walls/Wall_6_5"]
+[editable path="Walls/Wall_0_6"]
+[editable path="Walls/Wall_1_6"]
+[editable path="Walls/Wall_2_6"]
+[editable path="Walls/Wall_3_6"]
+[editable path="Walls/Wall_4_6"]
+[editable path="Walls/Wall_5_6"]
+[editable path="Walls/Wall_6_6"]
+[editable path="Walls/Wall_5_3"]
+[editable path="PlayerSpawn/Player"]
+[editable path="Enemies/Chaser1"]
+[editable path="Enemies/Chaser2"]
+[editable path="Props/ExitGate"]

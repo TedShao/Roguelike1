@@ -1,0 +1,304 @@
+[gd_scene load_steps=16 format=3]
+[ext_resource type="Script" path="res://game/scripts/main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://game/scenes/rooms/room_a.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://game/scenes/rooms/room_b.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://game/scenes/rooms/room_c.tscn" id="4"]
+[ext_resource type="Theme" path="res://game/ui/theme.tres" id="5"]
+[ext_resource type="Resource" path="res://game/data/skills/s02.tres" id="6"]
+[ext_resource type="Resource" path="res://game/data/skills/s04.tres" id="7"]
+[ext_resource type="Resource" path="res://game/data/skills/s05.tres" id="8"]
+[ext_resource type="Resource" path="res://game/data/skills/s06.tres" id="9"]
+[ext_resource type="Resource" path="res://game/data/skills/s09.tres" id="10"]
+[ext_resource type="Resource" path="res://game/data/skills/s10.tres" id="11"]
+[ext_resource type="Resource" path="res://game/data/skills/s13.tres" id="12"]
+[ext_resource type="Resource" path="res://game/data/skills/s15.tres" id="13"]
+[ext_resource type="Resource" path="res://game/data/skills/s17.tres" id="14"]
+[ext_resource type="Resource" path="res://game/data/skills/s18.tres" id="15"]
+[node name="Game" type="Node2D"]
+script = ExtResource("1")
+encounter_scenes = Array[PackedScene]([ExtResource("2"), ExtResource("3"), ExtResource("4")])
+skill_catalog = [ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("15")]
+[node name="RoomHost" type="Node2D" parent="."]
+position = Vector2(64, 172)
+[node name="RoomA" parent="RoomHost" instance=ExtResource("2")]
+[node name="HUD" type="CanvasLayer" parent="."]
+[node name="Root" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5")
+[node name="Eyebrow" type="Label" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 66.0
+offset_top = 25.0
+offset_right = 716.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 13
+text = "ROGUELIKE 1   /   第一轮战斗样片"
+mouse_filter = 2
+[node name="Title" type="Label" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 62.0
+offset_top = 51.0
+offset_right = 612.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 42
+text = "众说地窟"
+mouse_filter = 2
+[node name="Subtitle" type="Label" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 66.0
+offset_top = 111.0
+offset_right = 626.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 16
+text = "在荒诞规矩里，给自己留一步。"
+mouse_filter = 2
+[node name="Health" type="Label" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 666.0
+offset_top = 37.0
+offset_right = 911.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 20
+text = "生命 30 / 30"
+mouse_filter = 2
+[node name="HealthBar" type="ProgressBar" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 666.0
+offset_top = 74.0
+offset_right = 910.0
+offset_bottom = 81.0
+value = 100.0
+show_percentage = false
+mouse_filter = 2
+[node name="Pressure" type="Label" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 942.0
+offset_top = 37.0
+offset_right = 1187.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 20
+text = "压力 0 / 100"
+mouse_filter = 2
+[node name="PressureBar" type="ProgressBar" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 942.0
+offset_top = 74.0
+offset_right = 1186.0
+offset_bottom = 81.0
+value = 0.0
+show_percentage = false
+self_modulate = Color(1, 0.65, 0.55, 1)
+mouse_filter = 2
+[node name="Turn" type="Label" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 666.0
+offset_top = 100.0
+offset_right = 1186.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 15
+text = "行动 00 · 屏障 0 · 敌人 2"
+mouse_filter = 2
+[node name="Sidebar" type="PanelContainer" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 662.0
+offset_top = 158.0
+offset_right = 1210.0
+offset_bottom = 748.0
+
+[node name="Column" type="VBoxContainer" parent="HUD/Root/Sidebar"]
+theme_override_constants/separation = 8
+[node name="RoomTitle" type="Label" parent="HUD/Root/Sidebar/Column"]
+unique_name_in_owner = true
+theme_override_font_sizes/font_size = 23
+text = "A · 墙边展示房"
+[node name="RoomNote" type="Label" parent="HUD/Root/Sidebar/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+text = ""
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 14
+[node name="Inspect" type="Label" parent="HUD/Root/Sidebar/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+text = "查看敌人"
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 14
+[node name="SkillRow" type="HBoxContainer" parent="HUD/Root/Sidebar/Column"]
+theme_override_constants/separation = 8
+[node name="Slot1" type="Button" parent="HUD/Root/Sidebar/Column/SkillRow"]
+focus_mode = 0
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "基础技能"
+custom_minimum_size = Vector2(0, 42)
+[node name="Slot2" type="Button" parent="HUD/Root/Sidebar/Column/SkillRow"]
+focus_mode = 0
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "基础技能"
+custom_minimum_size = Vector2(0, 42)
+[node name="ActionRow" type="HBoxContainer" parent="HUD/Root/Sidebar/Column"]
+theme_override_constants/separation = 8
+[node name="Move" type="Button" parent="HUD/Root/Sidebar/Column/ActionRow"]
+focus_mode = 0
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "移动"
+[node name="Attack" type="Button" parent="HUD/Root/Sidebar/Column/ActionRow"]
+focus_mode = 0
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "普通攻击"
+[node name="Wait" type="Button" parent="HUD/Root/Sidebar/Column/ActionRow"]
+focus_mode = 0
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "空格 · 等待"
+[node name="Steady" type="Button" parent="HUD/Root/Sidebar/Column/ActionRow"]
+focus_mode = 0
+unique_name_in_owner = true
+size_flags_horizontal = 3
+text = "Q · 稳神"
+[node name="Overdrive" type="Button" parent="HUD/Root/Sidebar/Column"]
+focus_mode = 0
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 43)
+text = "R · 透支"
+[node name="CombatLog" type="RichTextLabel" parent="HUD/Root/Sidebar/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
+size_flags_vertical = 3
+text = ""
+scroll_following = true
+theme_override_font_sizes/normal_font_size = 14
+selection_enabled = true
+[node name="SafeRow" type="HBoxContainer" parent="HUD/Root/Sidebar/Column"]
+theme_override_constants/separation = 8
+[node name="Next" type="Button" parent="HUD/Root/Sidebar/Column/SafeRow"]
+unique_name_in_owner = true
+visible = false
+size_flags_horizontal = 3
+text = "下一房"
+[node name="Loadout" type="Button" parent="HUD/Root/Sidebar/Column/SafeRow"]
+unique_name_in_owner = true
+visible = false
+text = "免费重配"
+[node name="PressureEdit" type="HBoxContainer" parent="HUD/Root/Sidebar/Column"]
+unique_name_in_owner = true
+visible = false
+theme_override_constants/separation = 8
+[node name="PressureValue" type="SpinBox" parent="HUD/Root/Sidebar/Column/PressureEdit"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
+max_value = 100.0
+step = 1.0
+prefix = "压力"
+[node name="LowerPressure" type="Button" parent="HUD/Root/Sidebar/Column/PressureEdit"]
+unique_name_in_owner = true
+text = "降低至此数值"
+[node name="Restart" type="Button" parent="HUD/Root/Sidebar/Column"]
+unique_name_in_owner = true
+text = "重新开始本轮"
+custom_minimum_size = Vector2(0, 36)
+[node name="Hint" type="Label" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 64.0
+offset_top = 672.0
+offset_right = 644.0
+offset_bottom = 750.0
+theme_override_font_sizes/font_size = 15
+text = "选择行动后点击目标。"
+mouse_filter = 2
+autowrap_mode = 2
+[node name="Footer" type="Label" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 64.0
+offset_top = 763.0
+offset_right = 1184.0
+offset_bottom = 786.0
+theme_override_font_sizes/font_size = 13
+text = "WASD 移动  ·  1 / 2 技能  ·  右键取消  ·  无实时倒计时"
+mouse_filter = 2
+[node name="LoadoutPanel" type="PanelContainer" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 220.0
+offset_top = 166.0
+offset_right = 1060.0
+offset_bottom = 626.0
+visible = false
+z_index = 10
+[node name="Content" type="VBoxContainer" parent="HUD/Root/LoadoutPanel"]
+theme_override_constants/separation = 14
+[node name="PickerTitle" type="Label" parent="HUD/Root/LoadoutPanel/Content"]
+text = "从白板开始"
+theme_override_font_sizes/font_size = 30
+[node name="PickerHint" type="Label" parent="HUD/Root/LoadoutPanel/Content"]
+unique_name_in_owner = true
+text = "选择两项基础技能"
+autowrap_mode = 2
+custom_minimum_size = Vector2(0, 42)
+[node name="Choices" type="GridContainer" parent="HUD/Root/LoadoutPanel/Content"]
+unique_name_in_owner = true
+columns = 2
+theme_override_constants/h_separation = 14
+theme_override_constants/v_separation = 8
+[node name="S02" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "甩锅"
+tooltip_text = "相邻物理 6，推 2 格；遇阻碰撞 4。冷却 2。"
+[node name="S04" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "来电"
+tooltip_text = "可见 3 格单体魔法 8。冷却 2。"
+[node name="S05" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "开溜"
+tooltip_text = "沿空格路径移动最多 2 格，落点须可见。冷却 2。"
+[node name="S06" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "硬撑"
+tooltip_text = "本次响应每次敌方伤害减 6。冷却 2。点击即执行。"
+[node name="S09" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "横扫"
+tooltip_text = "选择相邻方向：前方三格各物理 6。冷却 2。"
+[node name="S10" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "突刺"
+tooltip_text = "直线 2 格内，接近目标后物理 7。冷却 2。"
+[node name="S13" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "法刃"
+tooltip_text = "相邻单体魔法 9。冷却 1。"
+[node name="S15" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "护体结界"
+tooltip_text = "屏障 8，覆盖本次及下一次响应。冷却 2。点击即执行。"
+[node name="S17" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "影袭"
+tooltip_text = "选 3 格内可见敌人，再选其相邻落点；路径≤4，物理 7。冷却 3。"
+[node name="S18" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
+custom_minimum_size = Vector2(380, 42)
+size_flags_horizontal = 3
+text = "处决击"
+tooltip_text = "相邻物理 7，目标≤40%生命时伤害+50%。冷却 2。"
+[node name="ApplyLoadout" type="Button" parent="HUD/Root/LoadoutPanel/Content"]
+unique_name_in_owner = true
+text = "以这两项能力出发"
+custom_minimum_size = Vector2(0, 36)

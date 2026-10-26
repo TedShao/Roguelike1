@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = "S15"
+display_name = "护体结界"
+description = "屏障 8，覆盖本次及下一次响应。冷却 2。点击即执行。"
+damage = 0
+damage_type = "none"
+reach = 0
+cooldown = 2
+push_distance = 0
+collision_damage = 0
+protection = 8
+protection_responses = 2
+path_limit = 0

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = "S13"
+display_name = "法刃"
+description = "相邻单体魔法 9。冷却 1。"
+damage = 9
+damage_type = "magic"
+reach = 1
+cooldown = 1
+push_distance = 0
+collision_damage = 0
+protection = 0
+protection_responses = 0
+path_limit = 0

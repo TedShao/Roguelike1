@@ -1,10 +1,19 @@
 # Roguelike1
 
-单角色回合制地牢 Roguelike，当前处于市场研究与产品设计阶段，尚未开发游戏或制作原型。
+单角色回合制地牢 Roguelike。**Godot D1 三房战斗切片已在本地实现并验证**，可在编辑器打开、编辑固定场景、运行测试；不是完整第一章。
 
-仓库：[TedShao/Roguelike1](https://github.com/TedShao/Roguelike1)。现有研究与设计文档已纳入 Git；后续文档和开发内容继续版本管理。
+仓库：[TedShao/Roguelike1](https://github.com/TedShao/Roguelike1)。研究、设计、Godot 工程、场景、资源与测试统一纳入 Git。
 
-2026-10-26：已按系统核查补成[第一章完整可玩规格 v0.4](design/first-playable/README.md)，覆盖战斗、敌人／首领、成长、NPC、商店、事件及保存。当前是待评审规格，尚未开发或试玩；Godot 安装通过版本检查，不等于工程、素材与平台准备完成。
+## 打开本地项目
+
+Godot 导入仓库根目录的 [project.godot](project.godot)。当前验证版本为 **Godot 4.7.2，Compatibility，macOS Apple M3**。运行项目（F5），选择两项基础技能开始；固定房间位于 `game/scenes/rooms/`，主场景位于 `game/scenes/main.tscn`。
+
+- **已实现：**A／B／C 三个固定房间、三类敌人、十项基础技能选二、一步一响应、关键攻击预告、透支3回合＋结束后冷却5回合并跨房保留、防护、压力、免费重配、失败重开和房间推进。
+- **尚未实现：**升级精修、符文掉落、完整构筑图鉴、NPC／商店／事件、首领、正式存档、八节点章节、声音、正式美术与发布导出。不会把 D1 当成完整游戏。
+- **编辑入口：**[固定配置编辑指南](docs/development/editor-guide.md)；[启动脚本覆盖清单](docs/development/startup-override-audit.md)。布局保存在场景，不在启动脚本另排一套。
+- **验证：**[D1 验证记录](docs/development/d1-verification.md)。103项原生检查、实际渲染与键鼠操作；这不能替代用户试玩和乐趣验证。
+
+2026-10-27 更新：上一阶段[第一章规格 v0.4](design/first-playable/README.md)作为实现依据。用户已授权创建并开始 Godot 初版；具体未确认数值仍是测试基准，不因此冻结平衡。
 
 ## 当前产品方向
 
@@ -15,7 +24,7 @@
 - 清场后可免费重配；透支双倍伤害／双倍承伤，持续 3 回合，效果结束后冷却 5 回合。
 - 允许成型构筑碾压普通房间。
 - 题材为中文社区抽象文化融合暗黑地牢；加入可控压力／癫狂，以高风险换取强收益。
-- Steam／桌面优先，网页试玩可选；2D 优先，具体画法、镜头和引擎未定，Godot 优先评估但未锁定。
+- Steam／桌面优先，网页试玩可选；2D 优先；当前初版使用 Godot，固定俯视网格；正式画风与素材方案仍待验证。
 
 ## 文档入口
 

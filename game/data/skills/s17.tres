@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = "S17"
+display_name = "影袭"
+description = "选 3 格内可见敌人，再选其相邻落点；路径≤4，物理 7。冷却 3。"
+damage = 7
+damage_type = "physical"
+reach = 3
+cooldown = 3
+push_distance = 0
+collision_damage = 0
+protection = 0
+protection_responses = 0
+path_limit = 4

@@ -8,3 +8,10 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# Godot cache, local editor state, exports and verification output
+.godot/
+exports/
+artifacts/*
+!artifacts/.gdignore
+*.tmp

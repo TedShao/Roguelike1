@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = "S09"
+display_name = "横扫"
+description = "选择相邻方向：前方三格各物理 6。冷却 2。"
+damage = 6
+damage_type = "physical"
+reach = 1
+cooldown = 2
+push_distance = 0
+collision_damage = 0
+protection = 0
+protection_responses = 0
+path_limit = 0

@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3]
+[ext_resource type="Script" path="res://game/scripts/fixed_room.gd" id="1"]
+[ext_resource type="Resource" path="res://game/data/rules.tres" id="2"]
+[ext_resource type="Texture2D" path="res://game/art/prototype/floor.svg" id="3"]
+[ext_resource type="PackedScene" path="res://game/scenes/props/wall.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://game/scenes/props/exit_gate.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/player.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/chaser.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/heavy.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/speaker.tscn" id="9"]
+[ext_resource type="Theme" path="res://game/ui/theme.tres" id="10"]
+[sub_resource type="RectangleShape2D" id="Bounds"]
+resource_local_to_scene = true
+size = Vector2(476, 476)
+[node name="RoomC" type="Node2D"]
+script = ExtResource("1")
+room_id = "C"
+display_name = "施压选择房"
+encounter_note = "十字施压覆盖四邻格。选择抢杀、位移，或承担已知压力。"
+cell_size = 68.0
+rules = ExtResource("2")
+[node name="Ground" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture_repeat = 2
+texture = ExtResource("3")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 476, 476)
+[node name="GridOrigin" type="Marker2D" parent="."]
+position = Vector2(34, 34)
+[node name="MapBounds" type="Area2D" parent="."]
+position = Vector2(238, 238)
+collision_layer = 0
+collision_mask = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBounds"]
+shape = SubResource("Bounds")
+[node name="Walls" type="Node2D" parent="."]
+[node name="Wall_0_0" parent="Walls" instance=ExtResource("4")]
+position = Vector2(34, 34)
+[node name="Wall_1_0" parent="Walls" instance=ExtResource("4")]
+position = Vector2(102, 34)
+[node name="Wall_2_0" parent="Walls" instance=ExtResource("4")]
+position = Vector2(170, 34)
+[node name="Wall_3_0" parent="Walls" instance=ExtResource("4")]
+position = Vector2(238, 34)
+[node name="Wall_4_0" parent="Walls" instance=ExtResource("4")]
+position = Vector2(306, 34)
+[node name="Wall_5_0" parent="Walls" instance=ExtResource("4")]
+position = Vector2(374, 34)
+[node name="Wall_6_0" parent="Walls" instance=ExtResource("4")]
+position = Vector2(442, 34)
+[node name="Wall_0_1" parent="Walls" instance=ExtResource("4")]
+position = Vector2(34, 102)
+[node name="Wall_6_1" parent="Walls" instance=ExtResource("4")]
+position = Vector2(442, 102)
+[node name="Wall_0_2" parent="Walls" instance=ExtResource("4")]
+position = Vector2(34, 170)
+[node name="Wall_6_2" parent="Walls" instance=ExtResource("4")]
+position = Vector2(442, 170)
+[node name="Wall_0_3" parent="Walls" instance=ExtResource("4")]
+position = Vector2(34, 238)
+[node name="Wall_6_3" parent="Walls" instance=ExtResource("4")]
+position = Vector2(442, 238)
+[node name="Wall_0_4" parent="Walls" instance=ExtResource("4")]
+position = Vector2(34, 306)
+[node name="Wall_6_4" parent="Walls" instance=ExtResource("4")]
+position = Vector2(442, 306)
+[node name="Wall_0_5" parent="Walls" instance=ExtResource("4")]
+position = Vector2(34, 374)
+[node name="Wall_6_5" parent="Walls" instance=ExtResource("4")]
+position = Vector2(442, 374)
+[node name="Wall_0_6" parent="Walls" instance=ExtResource("4")]
+position = Vector2(34, 442)
+[node name="Wall_1_6" parent="Walls" instance=ExtResource("4")]
+position = Vector2(102, 442)
+[node name="Wall_2_6" parent="Walls" instance=ExtResource("4")]
+position = Vector2(170, 442)
+[node name="Wall_3_6" parent="Walls" instance=ExtResource("4")]
+position = Vector2(238, 442)
+[node name="Wall_4_6" parent="Walls" instance=ExtResource("4")]
+position = Vector2(306, 442)
+[node name="Wall_5_6" parent="Walls" instance=ExtResource("4")]
+position = Vector2(374, 442)
+[node name="Wall_6_6" parent="Walls" instance=ExtResource("4")]
+position = Vector2(442, 442)
+[node name="Wall_3_2" parent="Walls" instance=ExtResource("4")]
+position = Vector2(238, 170)
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(170, 306)
+[node name="Player" parent="PlayerSpawn" instance=ExtResource("6")]
+[node name="Enemies" type="Node2D" parent="."]
+[node name="Speaker1" parent="Enemies" instance=ExtResource("9" )]
+position = Vector2(170, 102)
+[node name="Chaser2" parent="Enemies" instance=ExtResource("7" )]
+position = Vector2(306, 306)
+[node name="Props" type="Node2D" parent="."]
+[node name="ExitGate" parent="Props" instance=ExtResource("5")]
+position = Vector2(536, 370)
+[node name="ExitCaption" type="Label" parent="Props/ExitGate"]
+offset_left = -64.0
+offset_top = -74.0
+offset_right = 64.0
+offset_bottom = -50.0
+theme = ExtResource("10")
+theme_override_font_sizes/font_size = 13
+text = "前往下一房"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[editable path="Props/ExitGate"]
+[editable path="PlayerSpawn/Player"]
+[editable path="Walls/Wall_0_0"]
+[editable path="Walls/Wall_1_0"]
+[editable path="Walls/Wall_2_0"]
+[editable path="Walls/Wall_3_0"]
+[editable path="Walls/Wall_4_0"]
+[editable path="Walls/Wall_5_0"]
+[editable path="Walls/Wall_6_0"]
+[editable path="Walls/Wall_0_1"]
+[editable path="Walls/Wall_6_1"]
+[editable path="Walls/Wall_0_2"]
+[editable path="Walls/Wall_6_2"]
+[editable path="Walls/Wall_0_3"]
+[editable path="Walls/Wall_6_3"]
+[editable path="Walls/Wall_0_4"]
+[editable path="Walls/Wall_6_4"]
+[editable path="Walls/Wall_0_5"]
+[editable path="Walls/Wall_6_5"]
+[editable path="Walls/Wall_0_6"]
+[editable path="Walls/Wall_1_6"]
+[editable path="Walls/Wall_2_6"]
+[editable path="Walls/Wall_3_6"]
+[editable path="Walls/Wall_4_6"]
+[editable path="Walls/Wall_5_6"]
+[editable path="Walls/Wall_6_6"]
+[editable path="Walls/Wall_3_2"]
+[editable path="Enemies/Speaker1"]
+[editable path="Enemies/Chaser2"]

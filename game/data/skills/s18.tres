@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = "S18"
+display_name = "处决击"
+description = "相邻物理 7，目标≤40%生命时伤害+50%。冷却 2。"
+damage = 7
+damage_type = "physical"
+reach = 1
+cooldown = 2
+push_distance = 0
+collision_damage = 0
+protection = 0
+protection_responses = 0
+path_limit = 0

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/enemy_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = "speaker"
+display_name = "传话筒"
+max_health = 12
+damage = 0
+reach = 4
+pressure = 15
+description = "4 格内锁定玩家所在十字；下次响应范围内压力 +15，再恢复一次。被推移可打断。"

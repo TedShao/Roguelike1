@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BattleRules" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/battle_rules.gd" id="1"]
+[resource]
+script = ExtResource("1")
+player_health = 30
+basic_damage = 5
+overdrive_duration = 3
+overdrive_cooldown = 5
+overdrive_pressure = 20
+pressure_warning = 70
+pressure_growth = 10
+overload_threshold = 100
+overload_damage = 6
+overload_reset = 60
+steady_reduction = 30

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = "S02"
+display_name = "甩锅"
+description = "相邻物理 6，推 2 格；遇阻碰撞 4。冷却 2。"
+damage = 6
+damage_type = "physical"
+reach = 1
+cooldown = 2
+push_distance = 2
+collision_damage = 4
+protection = 0
+protection_responses = 0
+path_limit = 0

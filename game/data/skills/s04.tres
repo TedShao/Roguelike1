@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = "S04"
+display_name = "来电"
+description = "可见 3 格单体魔法 8。冷却 2。"
+damage = 8
+damage_type = "magic"
+reach = 3
+cooldown = 2
+push_distance = 0
+collision_damage = 0
+protection = 0
+protection_responses = 0
+path_limit = 0
