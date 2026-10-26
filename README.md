@@ -4,6 +4,8 @@
 
 仓库：[TedShao/Roguelike1](https://github.com/TedShao/Roguelike1)。现有研究与设计文档已纳入 Git；后续文档和开发内容继续版本管理。
 
+2026-10-26 启动评审：Godot 4.7.2 已核验可执行，但完整首版设计尚未就绪。敌人、NPC、商店经济和战斗结算等缺口见[全系统核查](design/systems-completeness-audit.md)，当前不把安装引擎或技能目录完成视为进入开发的充分条件。
+
 ## 当前产品方向
 
 - 单角色、一步一响应，敌人采用关键预告。
@@ -18,6 +20,8 @@
 
 |文档|内容|
 |---|---|
+|[全系统完整性核查](design/systems-completeness-audit.md)|各系统真实状态、敌人／NPC／商店规格示例、首版补齐工作包|
+|[启动评审与技术准备](design/development-readiness-review.md)|引擎检查、具体规则风险和战斗子原型范围|
 |[当前产品设计 v0.3](design/README.md)|确认项、核心体验、当前细化方案入口|
 |[白板成长与路径图鉴](design/progression-and-atlas.md)|自由学习与加点、8 类参考能力关系、混合与转型|
 |[回合与压力规则](design/combat-and-pressure.md)|透支、癫狂、超载、降压、冷却及预告规则草案|
