@@ -183,6 +183,35 @@ func preview(action: Dictionary) -> Dictionary:
 		reason = "未装备这项技能。"
 	if active_left > 0 or action.get("overdrive", false):
 		damage *= 2
+	if not valid:
+		if kind == "move":
+			reason = "普通移动只能到相邻空格，不会自动寻路。"
+		elif kind == "basic":
+			reason = "普攻需要相邻敌人；远处敌人需先接近或使用技能。"
+		elif kind == "S17":
+			reason = "影袭需要可见敌人和可达的相邻落点。"
+		elif kind == "S09":
+			reason = "横扫请选择自身上下左右相邻格作为方向。"
+		elif skills.has(kind):
+			reason = "目标超出射程、被墙遮挡或路径被占用。"
+	# Read-only player-action consequences. Enemy responses are intentionally not simulated.
+	var push_path: Array[Vector2i] = []
+	var collision: int = 0
+	var interrupt: bool = false
+	var hits: int = 0
+	for enemy in enemies:
+		if enemy.hp > 0 and enemy.cell in targets:
+			hits += 1
+	if valid and kind == "S02" and enemies[enemy_id].hp > damage:
+		var pushed: Vector2i = target
+		for step in range(skills[kind].push_distance):
+			var next: Vector2i = pushed + target - player
+			if not free_cell(next, enemy_id):
+				collision = skills[kind].collision_damage * (2 if active_left > 0 or action.get("overdrive", false) else 1)
+				break
+			pushed = next
+			push_path.append(pushed)
+		interrupt = not push_path.is_empty() and enemies[enemy_id].state == "prepared"
 	var after_pressure: int = pressure
 	if pressure >= rules.pressure_warning:
 		after_pressure += rules.pressure_growth
@@ -192,7 +221,27 @@ func preview(action: Dictionary) -> Dictionary:
 		after_pressure = maxi(0, after_pressure - rules.steady_reduction)
 	return {"valid": valid, "reason": "可执行" if valid else reason, "targets": targets,
 		"damage": damage, "path": path, "pressure": after_pressure,
-		"overload": after_pressure >= rules.overload_threshold}
+		"overload": after_pressure >= rules.overload_threshold, "hits": hits,
+		"push_path": push_path, "collision": collision, "interrupt": interrupt}
+
+func shadow_landings(target: Vector2i) -> Array:
+	var result: Array = []
+	if enemy_at(target) < 0:
+		return result
+	for direction in DIRECTIONS:
+		var landing: Vector2i = target + direction
+		if preview({"kind": "S17", "target": target, "landing": landing}).valid:
+			result.append(landing)
+	return result
+
+func intent_text(index: int) -> String:
+	var enemy: Dictionary = enemies[index]
+	var spec: EnemySpec = enemy.spec
+	if enemy.state == "recover":
+		return "下次响应：恢复，不攻击。"
+	if enemy.state == "prepared":
+		return "下次响应：攻击叉格，%s；锁地不追踪。" % ("压力 +%d" % spec.pressure if spec.kind == "speaker" else "基础伤害 %d" % spec.damage)
+	return spec.description
 
 func execute(action: Dictionary) -> Dictionary:
 	var checked: Dictionary = preview(action)

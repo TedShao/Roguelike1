@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" path="res://game/art/kenney/game-icons/exclamation.png" id="pressure_icon"]
 [ext_resource type="StyleBox" path="res://game/ui/health_fill.tres" id="health_fill"]
 [ext_resource type="StyleBox" path="res://game/ui/pressure_fill.tres" id="pressure_fill"]
+[ext_resource type="Script" path="res://game/scripts/auto_skill_button.gd" id="auto_button"]
 [node name="Game" type="Node2D"]
 script = ExtResource("1")
 encounter_scenes = Array[PackedScene]([ExtResource("2"), ExtResource("3"), ExtResource("4")])
@@ -194,7 +195,7 @@ unique_name_in_owner = true
 text = "选择行动后点击目标。"
 theme_override_font_sizes/font_size = 14
 mouse_filter = 2
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 72)
 autowrap_mode = 2
 theme_override_colors/font_color = Color(0.91, 0.78, 0.53, 1)
 [node name="SafeRow" type="HBoxContainer" parent="HUD/Root/Sidebar/Journal/Column"]
@@ -244,6 +245,7 @@ theme_override_constants/separation = 8
 [node name="Move" type="Button" parent="HUD/Root/Dock/Actions"]
 unique_name_in_owner = true
 focus_mode = 0
+toggle_mode = true
 text = "移动"
 custom_minimum_size = Vector2(85, 66)
 size_flags_horizontal = 3
@@ -253,6 +255,7 @@ theme_override_constants/icon_max_width = 24
 [node name="Attack" type="Button" parent="HUD/Root/Dock/Actions"]
 unique_name_in_owner = true
 focus_mode = 0
+toggle_mode = true
 text = "普攻"
 custom_minimum_size = Vector2(100, 66)
 size_flags_horizontal = 3
@@ -261,7 +264,9 @@ expand_icon = true
 theme_override_constants/icon_max_width = 24
 [node name="Slot1" type="Button" parent="HUD/Root/Dock/Actions"]
 unique_name_in_owner = true
+script = ExtResource("auto_button")
 focus_mode = 0
+toggle_mode = true
 text = "1 · 甩锅"
 expand_icon = true
 theme_override_constants/icon_max_width = 32
@@ -269,7 +274,9 @@ custom_minimum_size = Vector2(170, 66)
 size_flags_horizontal = 3
 [node name="Slot2" type="Button" parent="HUD/Root/Dock/Actions"]
 unique_name_in_owner = true
+script = ExtResource("auto_button")
 focus_mode = 0
+toggle_mode = true
 text = "2 · 来电"
 expand_icon = true
 theme_override_constants/icon_max_width = 32
@@ -302,7 +309,7 @@ offset_left = 42.0
 offset_top = 872.0
 offset_right = 1200.0
 offset_bottom = 895.0
-text = "WASD / 方向键移动     1 / 2 技能     点击目标预览 · 再次点击执行     右键 / Esc 取消"
+text = "左键：相邻敌人普攻 / 空格移动    1 / 2：选技能＋单击目标    WASD：走一步    右键图标：自动开关    右键地图 / Esc：取消瞄准"
 theme_override_font_sizes/font_size = 13
 mouse_filter = 2
 
@@ -342,7 +349,7 @@ theme_override_styles/panel = ExtResource("ribbon")
 [node name="PickerTitle" type="Label" parent="HUD/Root/LoadoutPanel/Content/Ribbon"]
 theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(1, 0.96, 0.84, 1)
-text = "能力图鉴 · 从白板开始"
+text = "基础能力 · 从白板开始"
 horizontal_alignment = 1
 vertical_alignment = 1
 [node name="PickerHint" type="Label" parent="HUD/Root/LoadoutPanel/Content"]
@@ -405,3 +412,17 @@ expand_mode = 1
 stretch_mode = 5
 mouse_filter = 2
 modulate = Color(0.94, 0.78, 0.51, 1)
+
+[node name="CancelLoadout" type="Button" parent="HUD/Root/LoadoutPanel/Content"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 32)
+text = "取消调整，保留原配置"
+
+[node name="RestartConfirm" type="ConfirmationDialog" parent="HUD/Root"]
+unique_name_in_owner = true
+title = "重新开始？"
+size = Vector2i(520, 180)
+dialog_text = "将放弃当前探索，回到第一房重新选择能力。"
+ok_button_text = "放弃本局并重开"
+cancel_button_text = "继续当前探索"

@@ -8,7 +8,7 @@
 2. 双击 `game/scenes/rooms/maze_a.tscn`，切到顶部 **2D**。另外两房为 `maze_b.tscn`、`maze_c.tscn`。
 3. 编辑器内修改“本地”场景并保存；运行中的“远程”节点修改不会成为长期配置。
 4. 运行项目（F5 或右上角三角按钮），主场景是 `game/scenes/main.tscn`。不要用 F6 单独运行房间来测试战斗，房间自身没有主控制器／HUD。
-5. 开局点击技能卡选择，再点同一卡取消；选满两项后点击底部出发。悬停有图标放大与高亮，点击有粒子反馈。WASD／方向键移动，1／2 选技能，鼠标第一次预览、再次点击同目标执行，右键／Esc 取消。普通攻击有独立按钮；空格等待、Q 稳神、R 为下一次有效行动开启透支。硬撑和护体结界点击即执行。
+5. 开局点击技能卡选择，再点同一卡取消；选满两项后点击底部出发。悬停有图标放大与高亮，点击有粒子反馈。WASD／方向键移动；默认左键点相邻敌人普攻、点相邻空格移动。1／2 选技能，悬停预览，单击目标直接施放；影袭先点敌人再点落点。右键地图／Esc 取消瞄准及未激活透支。右键技能按钮开启自动施放（环绕闪烁），再次右键关闭；每次自动技能仍耗一回合。空格等待、Q 稳神、R 为下一次有效行动开启透支。硬撑和护体结界点击即执行。
 
 ## 在哪里修改
 
@@ -75,3 +75,13 @@
 先改出口根节点 Position 并保存、运行，确认图像和提示跟随、清场后能点击进入下一房；再改局部图像尺寸并核对交互形状。修改出生点时同时看 GridOrigin、Cell Size、MapBounds 和 Walls。修改地面范围时同时看边界，但不要把地面贴图当作碰撞。
 
 运行后的角色位移、血量、冷却、提示显隐、选择预览、粒子和动画是正常动态行为。固定节点的贴图、位置、尺寸与形状不在启动时重设。详见[覆盖审计](startup-override-audit.md)与[验证记录](d1-verification.md)。
+
+
+## 2026-10-27 交互精修编辑项
+
+- `main.tscn → Game → Autocast Delay Seconds`：自动动作前的反应间隔，默认0.4秒，不推进冷却。
+- `HUD/Root/Dock/Actions/Slot1、Slot2 → Auto Border Color / Auto Border Period`：环绕闪烁颜色及周期；边框从按钮当前Size绘制，按钮整体移动／缩放无需改另一套位置。脚本 `auto_skill_button.gd` 只刷新绘制，不改布局、贴图、尺寸。
+- `HUD/Root/LoadoutPanel/Content/CancelLoadout`：清场取消草稿按钮；位置交由同一个VBoxContainer，开局隐藏。
+- `HUD/Root/RestartConfirm`：重开确认文字与窗口尺寸；不涉及存档读写。
+- `FixedRoom.refresh_overlays`：只绘制运行时目标／路径，不改变地面与碰撞。新的只读目标逻辑在 `autocast_planner.gd`；没有第二套战斗执行器。
+- 新操作及自动决策边界见 [交互精修验证](interaction-refinement.md)。

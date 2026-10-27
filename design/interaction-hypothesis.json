@@ -1,0 +1,90 @@
+{
+  "contract_version": 1,
+  "design_question": "Can smart single-click input and optional automatic skills reduce repetitive inputs while preserving meaningful positioning and risk choices?",
+  "context": {
+    "build": "Godot D1 interaction refinement, baseline 1e1ea48",
+    "player_context": "Project user on desktop keyboard and mouse; human comparison has not run.",
+    "evidence": [
+      "User explicitly reported that action selection plus two target clicks is cumbersome.",
+      "Code review found pending confirmation state and misleading post-action pressure wording.",
+      "User confirmed smart left click, right-click autocast, full turn costs, and only an animated border indicator."
+    ],
+    "decision": "Adopt requested controls and evaluate whether targeting heuristics need revision."
+  },
+  "desired_experience": {
+    "statement": "Less repeated input while keeping intentional positioning, skill and overdrive decisions.",
+    "observable_signals": [
+      "Player can explain the expected hit, push and next telegraphed threat.",
+      "Player can disable an unwanted automatic skill directly on its button."
+    ]
+  },
+  "lens": {
+    "name": "decision structure",
+    "why": "The change affects information, input cost and delegation of choices.",
+    "limitations": "Fewer clicks cannot prove enjoyment; automated victories cannot replace player judgment."
+  },
+  "causal_chain": [
+    {
+      "mechanic": "Hover previews and single click commits; right click authorizes repeated legal skill use.",
+      "interaction": "Player directly selects targets or delegates repeated choices to a reversible heuristic.",
+      "dynamic": "Fewer confirmation inputs, with some targeting decisions delegated.",
+      "perceived_signal": "Preview explains consequences and animated border communicates active authorization.",
+      "experience": "Expected fluency and control, not yet observed in human play.",
+      "assumption": "Autocast does not steal choices the player values.",
+      "evidence": "Input tests establish step counts; experiential arrows still require human comparison."
+    }
+  ],
+  "hypotheses": [
+    {
+      "claim": "Single click reduces repetition, and optional autocast reduces work for already-decided actions.",
+      "change": "Replace click-to-preview with hover-to-preview and provide per-skill autocast.",
+      "expected_signal": "Players need fewer confirmations and can explain when they keep manual control.",
+      "falsifier": "Accidental commitments or unwanted auto targets dominate, or combat becomes passive waiting.",
+      "competing_explanation": "Empty encounter space may be the cause of repetitive actions, merely masked by input changes.",
+      "unchanged": "Damage, cooldowns, enemy response order, map layout, rewards and skill content."
+    }
+  ],
+  "prototype": {
+    "control": "Baseline 1e1ea48 two-click confirmation in matched encounter states.",
+    "variant": "First smart click without auto, then matched states with optional automatic skills.",
+    "scope": "Target commitment, telegraph understanding, auto cancellation and local choices.",
+    "risks": "Learning and encounter-order effects; already-confirmed user preferences are not treated as unapproved."
+  },
+  "evidence_plan": {
+    "participants_context": "Invite the project user to play; record prior familiarity and input method. No additional players recruited.",
+    "observations": [
+      "Input chain and accidental actions for basic attacks and skills.",
+      "Unwanted auto targets and reasons for disabling a skill."
+    ],
+    "behavioral_measures": [
+      "Compare input counts and invalid actions at matched states.",
+      "Record immediate auto cancellation or reports of lost intent."
+    ],
+    "qualitative_prompts": [
+      "What did you expect to hit and what would respond?",
+      "Which automatic cast conflicted with your intention and why?"
+    ],
+    "decision_rule": "Keep direct inputs if they reduce repetition without confusing outcomes; revise auto targeting if it repeatedly conflicts with intent. If repetitive encounters dominate, prioritize encounter design instead of increasing damage.",
+    "integrity_checks": [
+      "Match rules, enemies and positions and record whether auto is enabled.",
+      "Record comparison order, familiarity and input device.",
+      "Separate engineering tests from human play and disclose manipulated fixtures."
+    ]
+  },
+  "ethics": {
+    "dark_patterns": "No hidden cost, spending pressure or new real-time battle punishment; auto is directly reversible.",
+    "accessibility": "Use shape and text for targets; border animation follows user preference with tooltip text. Reduced animation options remain unimplemented.",
+    "privacy": "Only necessary local test evidence; human feedback is voluntary."
+  },
+  "decisions": [
+    {
+      "decision": "Adopt user-approved smart click and per-skill automatic casting with existing turn resolution.",
+      "basis": "Explicit user choice and reproducible input burden; enjoyment remains untested.",
+      "owner": "Interaction implementation and user playtest"
+    }
+  ],
+  "route_out": {
+    "next_owner": "Interaction refinement and human playtest review",
+    "reason": "After technical checks, assess whether automatic targeting fits intent and encounters remain meaningful."
+  }
+}

@@ -1,6 +1,6 @@
 # Roguelike1
 
-单角色回合制地牢 Roguelike。**Godot D1 已升级为 Kenney 美术、三张19×13地牢、可点击技能卡**，可在编辑器打开、编辑固定场景、运行测试；不是完整第一章。
+单角色回合制地牢 Roguelike。**Godot D1 已升级为 Kenney 美术、三张19×13地牢、可点击技能卡、智能左键和右键自动施放**，可在编辑器打开、编辑固定场景、运行测试；不是完整第一章。
 
 仓库：[TedShao/Roguelike1](https://github.com/TedShao/Roguelike1)。研究、设计、Godot 工程、场景、资源与测试统一纳入 Git。
 
@@ -8,12 +8,14 @@
 
 Godot 导入仓库根目录的 [project.godot](project.godot)。当前验证版本为 **Godot 4.7.2，Compatibility，macOS Apple M3**。运行项目（F5），点击卡片选择两项基础技能开始；当前地图为 `game/scenes/rooms/maze_a.tscn`、`maze_b.tscn`、`maze_c.tscn`（旧room_*是测试夹具），主场景位于 `game/scenes/main.tscn`。
 
+默认左键点相邻敌人普攻、点相邻空格移动；1／2选技能后单击目标施放。右键技能按钮开启环绕闪烁与自动施放，再次右键关闭；每次自动施放照常耗回合。
+
 - **已实现：**A／B／C 三张19×13固定地牢、Kenney UI面板与图标、卡片悬停／点击粒子、三类敌人、十项基础技能选二、一步一响应、关键攻击预告、透支3回合＋结束后冷却5回合并跨房保留、防护、压力、免费重配、失败重开和房间推进。
 - **尚未实现：**升级精修、符文掉落、完整构筑图鉴、NPC／商店／事件、首领、正式存档、八节点章节、声音、最终美术精修与发布导出。不会把 D1 当成完整游戏。
 - **编辑入口：**[固定配置编辑指南](docs/development/editor-guide.md)；[启动脚本覆盖清单](docs/development/startup-override-audit.md)。布局保存在场景，不在启动脚本另排一套。
-- **验证：**[D1 验证记录](docs/development/d1-verification.md)。103项规则回归、93项地图／图标检查、44项实际渲染与界面输入检查；这不能替代用户试玩和乐趣验证。
+- **验证：**[D1 验证记录](docs/development/d1-verification.md)。103项规则回归、93项地图／图标检查、44项实际渲染与界面输入检查、56项新交互检查；这不能替代用户试玩和乐趣验证。
 
-本轮细节：[Kenney 重绘验证](docs/development/kenney-redesign-verification.md)；[素材来源与哈希](game/art/kenney/manifest.json)；[十技能图标含义](game/art/skills/manifest.json)。
+本轮细节：[交互与自动施放精修](docs/development/interaction-refinement.md)；[Kenney 重绘验证](docs/development/kenney-redesign-verification.md)；[素材来源与哈希](game/art/kenney/manifest.json)；[十技能图标含义](game/art/skills/manifest.json)。
 
 2026-10-27 更新：上一阶段[第一章规格 v0.4](design/first-playable/README.md)作为实现依据。用户已授权创建并开始 Godot 初版；具体未确认数值仍是测试基准，不因此冻结平衡。
 
