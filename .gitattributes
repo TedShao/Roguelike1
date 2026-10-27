@@ -1,0 +1,2 @@
+# Preserve upstream license originals byte-for-byte for the asset checksum manifest.
+game/art/kenney/**/License.txt -text -diff

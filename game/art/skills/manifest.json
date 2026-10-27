@@ -1,0 +1,106 @@
+[
+  {
+    "skill_id": "S02",
+    "meaning": "甩锅 / 推退碰撞",
+    "file": "s02.svg",
+    "source_tiles": [],
+    "source": "Project-authored semantic SVG; not represented as an unmodified Kenney icon"
+  },
+  {
+    "skill_id": "S04",
+    "meaning": "来电 / 远程魔法雷击",
+    "file": "s04.svg",
+    "source_tiles": [],
+    "source": "Project-authored semantic SVG; not represented as an unmodified Kenney icon"
+  },
+  {
+    "skill_id": "S05",
+    "meaning": "开溜 / 两格位移",
+    "file": "s05.svg",
+    "source_tiles": [],
+    "source": "Project-authored semantic SVG; not represented as an unmodified Kenney icon"
+  },
+  {
+    "skill_id": "S06",
+    "meaning": "硬撑 / 本回合减伤",
+    "file": "s06.svg",
+    "source_tiles": [
+      [
+        37,
+        4
+      ]
+    ],
+    "source": "Kenney 1-Bit Pack glyphs vectorized from alpha + project effect marks"
+  },
+  {
+    "skill_id": "S09",
+    "meaning": "横扫 / 前方三格扇形攻击",
+    "file": "s09.svg",
+    "source_tiles": [
+      [
+        34,
+        7
+      ]
+    ],
+    "source": "Kenney 1-Bit Pack glyphs vectorized from alpha + project effect marks"
+  },
+  {
+    "skill_id": "S10",
+    "meaning": "突刺 / 直线接近穿刺",
+    "file": "s10.svg",
+    "source_tiles": [
+      [
+        32,
+        3
+      ]
+    ],
+    "source": "Kenney 1-Bit Pack glyphs vectorized from alpha + project effect marks"
+  },
+  {
+    "skill_id": "S13",
+    "meaning": "法刃 / 贴身魔法斩击",
+    "file": "s13.svg",
+    "source_tiles": [
+      [
+        33,
+        8
+      ]
+    ],
+    "source": "Kenney 1-Bit Pack glyphs vectorized from alpha + project effect marks"
+  },
+  {
+    "skill_id": "S15",
+    "meaning": "护体结界 / 持续两次响应的屏障",
+    "file": "s15.svg",
+    "source_tiles": [],
+    "source": "Project-authored semantic SVG; not represented as an unmodified Kenney icon"
+  },
+  {
+    "skill_id": "S17",
+    "meaning": "影袭 / 移位至敌人身旁并刺击",
+    "file": "s17.svg",
+    "source_tiles": [
+      [
+        32,
+        6
+      ]
+    ],
+    "source": "Kenney 1-Bit Pack glyphs vectorized from alpha + project effect marks"
+  },
+  {
+    "skill_id": "S18",
+    "meaning": "处决击 / 低血量斩杀",
+    "file": "s18.svg",
+    "source_tiles": [
+      [
+        42,
+        5
+      ],
+      [
+        38,
+        11
+      ]
+    ],
+    "source": "Kenney 1-Bit Pack glyphs vectorized from alpha + project effect marks"
+  }
+]

@@ -1,0 +1,1239 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://game/scripts/fixed_room.gd" id="script"]
+[ext_resource type="Resource" path="res://game/data/rules.tres" id="rules"]
+[ext_resource type="PackedScene" path="res://game/scenes/props/dungeon_wall.tscn" id="wall"]
+[ext_resource type="PackedScene" path="res://game/scenes/props/dungeon_exit.tscn" id="exit"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/player.tscn" id="player"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/chaser.tscn" id="chaser"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/heavy.tscn" id="heavy"]
+[ext_resource type="PackedScene" path="res://game/scenes/actors/speaker.tscn" id="speaker"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0014.tres" id="t14"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0024.tres" id="t24"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0029.tres" id="t29"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0032.tres" id="t32"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0040.tres" id="t40"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0041.tres" id="t41"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0048.tres" id="t48"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0049.tres" id="t49"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0050.tres" id="t50"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0051.tres" id="t51"]
+[ext_resource type="Texture2D" path="res://game/art/torch_light.tres" id="light"]
+[sub_resource type="RectangleShape2D" id="Bounds"]
+resource_local_to_scene = true
+size = Vector2(912, 624)
+[node name="MazeA" type="Node2D"]
+texture_filter = 1
+script = ExtResource("script")
+room_id = "A"
+display_name = "众说回廊"
+encounter_note = "绕过两侧石墙，利用拐角分开追兵。中央回廊连通南北，两条侧路可以绕回。"
+cell_size = 48.0
+rules = ExtResource("rules")
+show_grid = true
+grid_color = Color(0.84, 0.75, 0.60, 0.08)
+[node name="Ground" type="Node2D" parent="."]
+z_index = -10
+[node name="Floor_1_1" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_2" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_3" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_4" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_5" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_6" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_7" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_8" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_9" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_10" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_1_11" type="Sprite2D" parent="Ground"]
+position = Vector2(72, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_1" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_2" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_3" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_4" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_6" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_7" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_8" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_9" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_10" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_2_11" type="Sprite2D" parent="Ground"]
+position = Vector2(120, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_1" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_2" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_3" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_4" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_6" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_7" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_8" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_9" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_10" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_3_11" type="Sprite2D" parent="Ground"]
+position = Vector2(168, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_1" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_2" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_3" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_4" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_6" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_7" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_8" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_9" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_10" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_4_11" type="Sprite2D" parent="Ground"]
+position = Vector2(216, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_1" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_2" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_3" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_4" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_5" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_6" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_7" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_8" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_9" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_10" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_5_11" type="Sprite2D" parent="Ground"]
+position = Vector2(264, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_6_5" type="Sprite2D" parent="Ground"]
+position = Vector2(312, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_6_10" type="Sprite2D" parent="Ground"]
+position = Vector2(312, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_6_11" type="Sprite2D" parent="Ground"]
+position = Vector2(312, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_1" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_2" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_3" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_4" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_5" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_6" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_7" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_8" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_9" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_10" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_7_11" type="Sprite2D" parent="Ground"]
+position = Vector2(360, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_1" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_2" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_3" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_4" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_6" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_7" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_8" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_9" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_10" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_8_11" type="Sprite2D" parent="Ground"]
+position = Vector2(408, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_1" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_2" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_3" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_4" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_6" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_7" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_8" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_9" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_10" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_9_11" type="Sprite2D" parent="Ground"]
+position = Vector2(456, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_1" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_2" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_3" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_4" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_6" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_7" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_8" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_9" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_10" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_10_11" type="Sprite2D" parent="Ground"]
+position = Vector2(504, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_1" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_2" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_3" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_4" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_5" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_6" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_7" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_8" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_9" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_10" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_11_11" type="Sprite2D" parent="Ground"]
+position = Vector2(552, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_12_1" type="Sprite2D" parent="Ground"]
+position = Vector2(600, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_12_2" type="Sprite2D" parent="Ground"]
+position = Vector2(600, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_12_7" type="Sprite2D" parent="Ground"]
+position = Vector2(600, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_1" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_2" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_3" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_4" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_5" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_6" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_7" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_8" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_9" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_10" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_13_11" type="Sprite2D" parent="Ground"]
+position = Vector2(648, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_1" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_2" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_3" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_4" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_5" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_6" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_8" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_9" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_10" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_14_11" type="Sprite2D" parent="Ground"]
+position = Vector2(696, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_1" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_2" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_3" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_4" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_5" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_6" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_8" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_9" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_10" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_15_11" type="Sprite2D" parent="Ground"]
+position = Vector2(744, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_1" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_2" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_3" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_4" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_5" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_6" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_8" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_9" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_10" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_16_11" type="Sprite2D" parent="Ground"]
+position = Vector2(792, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_1" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 72)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_2" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 120)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_3" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 168)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_4" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("t49")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_5" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 264)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_6" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 312)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_7" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_8" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 408)
+scale = Vector2(3, 3)
+texture = ExtResource("t50")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_9" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 456)
+scale = Vector2(3, 3)
+texture = ExtResource("t51")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_10" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 504)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="Floor_17_11" type="Sprite2D" parent="Ground"]
+position = Vector2(840, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("t48")
+self_modulate = Color(0.48, 0.48, 0.54, 1)
+[node name="GridOrigin" type="Marker2D" parent="."]
+position = Vector2(24, 24)
+[node name="MapBounds" type="Area2D" parent="."]
+position = Vector2(456, 312)
+collision_layer = 0
+collision_mask = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBounds"]
+shape = SubResource("Bounds")
+[node name="Walls" type="Node2D" parent="."]
+[node name="Wall_0_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 24)
+[node name="Sprite2D" parent="Walls/Wall_0_0" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_0_1" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 72)
+[node name="Wall_0_2" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 120)
+[node name="Wall_0_3" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 168)
+[node name="Wall_0_4" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 216)
+[node name="Sprite2D" parent="Walls/Wall_0_4" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_0_5" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 264)
+[node name="Wall_0_6" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 312)
+[node name="Wall_0_7" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 360)
+[node name="Wall_0_8" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 408)
+[node name="Sprite2D" parent="Walls/Wall_0_8" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_0_9" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 456)
+[node name="Wall_0_10" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 504)
+[node name="Wall_0_11" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 552)
+[node name="Wall_0_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(24, 600)
+[node name="Sprite2D" parent="Walls/Wall_0_12" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_1_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(72, 24)
+[node name="Wall_1_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(72, 600)
+[node name="Wall_2_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(120, 24)
+[node name="Wall_2_5" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(120, 264)
+[node name="Wall_2_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(120, 600)
+[node name="Wall_3_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(168, 24)
+[node name="Ornament" type="Sprite2D" parent="Walls/Wall_3_0"]
+texture = ExtResource("t29")
+scale = Vector2(3, 3)
+[node name="Glow" type="PointLight2D" parent="Walls/Wall_3_0/Ornament"]
+position = Vector2(0, 3)
+color = Color(1, 0.55, 0.22, 1)
+energy = 0.6
+texture = ExtResource("light")
+texture_scale = 0.55
+[node name="Wall_3_5" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(168, 264)
+[node name="Sprite2D" parent="Walls/Wall_3_5" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_3_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(168, 600)
+[node name="Ornament" type="Sprite2D" parent="Walls/Wall_3_12"]
+texture = ExtResource("t29")
+scale = Vector2(3, 3)
+[node name="Glow" type="PointLight2D" parent="Walls/Wall_3_12/Ornament"]
+position = Vector2(0, 3)
+color = Color(1, 0.55, 0.22, 1)
+energy = 0.6
+texture = ExtResource("light")
+texture_scale = 0.55
+[node name="Wall_4_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(216, 24)
+[node name="Sprite2D" parent="Walls/Wall_4_0" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_4_5" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(216, 264)
+[node name="Wall_4_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(216, 600)
+[node name="Sprite2D" parent="Walls/Wall_4_12" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_5_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(264, 24)
+[node name="Wall_5_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(264, 600)
+[node name="Wall_6_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 24)
+[node name="Wall_6_1" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 72)
+[node name="Wall_6_2" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 120)
+[node name="Sprite2D" parent="Walls/Wall_6_2" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_6_3" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 168)
+[node name="Wall_6_4" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 216)
+[node name="Ornament" type="Sprite2D" parent="Walls/Wall_6_4"]
+texture = ExtResource("t32")
+scale = Vector2(3, 3)
+[node name="Glow" type="PointLight2D" parent="Walls/Wall_6_4/Ornament"]
+position = Vector2(0, 3)
+color = Color(0.35, 1, 0.78, 1)
+energy = 0.6
+texture = ExtResource("light")
+texture_scale = 0.55
+[node name="Wall_6_6" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 312)
+[node name="Sprite2D" parent="Walls/Wall_6_6" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_6_7" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 360)
+[node name="Wall_6_8" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 408)
+[node name="Wall_6_9" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 456)
+[node name="Wall_6_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(312, 600)
+[node name="Wall_7_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(360, 24)
+[node name="Wall_7_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(360, 600)
+[node name="Wall_8_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(408, 24)
+[node name="Sprite2D" parent="Walls/Wall_8_0" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_8_5" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(408, 264)
+[node name="Wall_8_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(408, 600)
+[node name="Sprite2D" parent="Walls/Wall_8_12" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_9_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(456, 24)
+[node name="Ornament" type="Sprite2D" parent="Walls/Wall_9_0"]
+texture = ExtResource("t29")
+scale = Vector2(3, 3)
+[node name="Glow" type="PointLight2D" parent="Walls/Wall_9_0/Ornament"]
+position = Vector2(0, 3)
+color = Color(1, 0.55, 0.22, 1)
+energy = 0.6
+texture = ExtResource("light")
+texture_scale = 0.55
+[node name="Wall_9_5" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(456, 264)
+[node name="Wall_9_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(456, 600)
+[node name="Ornament" type="Sprite2D" parent="Walls/Wall_9_12"]
+texture = ExtResource("t29")
+scale = Vector2(3, 3)
+[node name="Glow" type="PointLight2D" parent="Walls/Wall_9_12/Ornament"]
+position = Vector2(0, 3)
+color = Color(1, 0.55, 0.22, 1)
+energy = 0.6
+texture = ExtResource("light")
+texture_scale = 0.55
+[node name="Wall_10_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(504, 24)
+[node name="Wall_10_5" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(504, 264)
+[node name="Wall_10_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(504, 600)
+[node name="Wall_11_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(552, 24)
+[node name="Wall_11_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(552, 600)
+[node name="Wall_12_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 24)
+[node name="Sprite2D" parent="Walls/Wall_12_0" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_12_3" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 168)
+[node name="Wall_12_4" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 216)
+[node name="Sprite2D" parent="Walls/Wall_12_4" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_12_5" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 264)
+[node name="Wall_12_6" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 312)
+[node name="Wall_12_8" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 408)
+[node name="Sprite2D" parent="Walls/Wall_12_8" index="0"]
+texture = ExtResource("t40")
+[node name="Ornament" type="Sprite2D" parent="Walls/Wall_12_8"]
+texture = ExtResource("t32")
+scale = Vector2(3, 3)
+[node name="Glow" type="PointLight2D" parent="Walls/Wall_12_8/Ornament"]
+position = Vector2(0, 3)
+color = Color(0.35, 1, 0.78, 1)
+energy = 0.6
+texture = ExtResource("light")
+texture_scale = 0.55
+[node name="Wall_12_9" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 456)
+[node name="Wall_12_10" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 504)
+[node name="Wall_12_11" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 552)
+[node name="Wall_12_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(600, 600)
+[node name="Sprite2D" parent="Walls/Wall_12_12" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_13_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(648, 24)
+[node name="Wall_13_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(648, 600)
+[node name="Wall_14_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(696, 24)
+[node name="Wall_14_7" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(696, 360)
+[node name="Wall_14_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(696, 600)
+[node name="Wall_15_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(744, 24)
+[node name="Ornament" type="Sprite2D" parent="Walls/Wall_15_0"]
+texture = ExtResource("t29")
+scale = Vector2(3, 3)
+[node name="Glow" type="PointLight2D" parent="Walls/Wall_15_0/Ornament"]
+position = Vector2(0, 3)
+color = Color(1, 0.55, 0.22, 1)
+energy = 0.6
+texture = ExtResource("light")
+texture_scale = 0.55
+[node name="Wall_15_7" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(744, 360)
+[node name="Wall_15_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(744, 600)
+[node name="Ornament" type="Sprite2D" parent="Walls/Wall_15_12"]
+texture = ExtResource("t29")
+scale = Vector2(3, 3)
+[node name="Glow" type="PointLight2D" parent="Walls/Wall_15_12/Ornament"]
+position = Vector2(0, 3)
+color = Color(1, 0.55, 0.22, 1)
+energy = 0.6
+texture = ExtResource("light")
+texture_scale = 0.55
+[node name="Wall_16_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(792, 24)
+[node name="Sprite2D" parent="Walls/Wall_16_0" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_16_7" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(792, 360)
+[node name="Wall_16_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(792, 600)
+[node name="Sprite2D" parent="Walls/Wall_16_12" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_17_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(840, 24)
+[node name="Wall_17_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(840, 600)
+[node name="Wall_18_0" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 24)
+[node name="Wall_18_1" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 72)
+[node name="Wall_18_2" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 120)
+[node name="Sprite2D" parent="Walls/Wall_18_2" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_18_3" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 168)
+[node name="Wall_18_4" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 216)
+[node name="Wall_18_5" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 264)
+[node name="Wall_18_6" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 312)
+[node name="Sprite2D" parent="Walls/Wall_18_6" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_18_7" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 360)
+[node name="Wall_18_8" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 408)
+[node name="Wall_18_9" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 456)
+[node name="Wall_18_10" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 504)
+[node name="Sprite2D" parent="Walls/Wall_18_10" index="0"]
+texture = ExtResource("t40")
+[node name="Wall_18_11" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 552)
+[node name="Wall_18_12" parent="Walls" instance=ExtResource("wall")]
+position = Vector2(888, 600)
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(120, 456)
+[node name="Player" parent="PlayerSpawn" instance=ExtResource("player")]
+[node name="Enemies" type="Node2D" parent="."]
+[node name="Chaser1" parent="Enemies" instance=ExtResource("chaser")]
+position = Vector2(216, 408)
+[node name="Chaser2" parent="Enemies" instance=ExtResource("chaser")]
+position = Vector2(456, 168)
+[node name="Chaser3" parent="Enemies" instance=ExtResource("chaser")]
+position = Vector2(744, 456)
+[node name="Props" type="Node2D" parent="."]
+[node name="ExitGate" parent="Props" instance=ExtResource("exit")]
+position = Vector2(840, 72)
+[editable path="Walls/Wall_0_0"]
+[editable path="Walls/Wall_0_1"]
+[editable path="Walls/Wall_0_2"]
+[editable path="Walls/Wall_0_3"]
+[editable path="Walls/Wall_0_4"]
+[editable path="Walls/Wall_0_5"]
+[editable path="Walls/Wall_0_6"]
+[editable path="Walls/Wall_0_7"]
+[editable path="Walls/Wall_0_8"]
+[editable path="Walls/Wall_0_9"]
+[editable path="Walls/Wall_0_10"]
+[editable path="Walls/Wall_0_11"]
+[editable path="Walls/Wall_0_12"]
+[editable path="Walls/Wall_1_0"]
+[editable path="Walls/Wall_1_12"]
+[editable path="Walls/Wall_2_0"]
+[editable path="Walls/Wall_2_5"]
+[editable path="Walls/Wall_2_12"]
+[editable path="Walls/Wall_3_0"]
+[editable path="Walls/Wall_3_5"]
+[editable path="Walls/Wall_3_12"]
+[editable path="Walls/Wall_4_0"]
+[editable path="Walls/Wall_4_5"]
+[editable path="Walls/Wall_4_12"]
+[editable path="Walls/Wall_5_0"]
+[editable path="Walls/Wall_5_12"]
+[editable path="Walls/Wall_6_0"]
+[editable path="Walls/Wall_6_1"]
+[editable path="Walls/Wall_6_2"]
+[editable path="Walls/Wall_6_3"]
+[editable path="Walls/Wall_6_4"]
+[editable path="Walls/Wall_6_6"]
+[editable path="Walls/Wall_6_7"]
+[editable path="Walls/Wall_6_8"]
+[editable path="Walls/Wall_6_9"]
+[editable path="Walls/Wall_6_12"]
+[editable path="Walls/Wall_7_0"]
+[editable path="Walls/Wall_7_12"]
+[editable path="Walls/Wall_8_0"]
+[editable path="Walls/Wall_8_5"]
+[editable path="Walls/Wall_8_12"]
+[editable path="Walls/Wall_9_0"]
+[editable path="Walls/Wall_9_5"]
+[editable path="Walls/Wall_9_12"]
+[editable path="Walls/Wall_10_0"]
+[editable path="Walls/Wall_10_5"]
+[editable path="Walls/Wall_10_12"]
+[editable path="Walls/Wall_11_0"]
+[editable path="Walls/Wall_11_12"]
+[editable path="Walls/Wall_12_0"]
+[editable path="Walls/Wall_12_3"]
+[editable path="Walls/Wall_12_4"]
+[editable path="Walls/Wall_12_5"]
+[editable path="Walls/Wall_12_6"]
+[editable path="Walls/Wall_12_8"]
+[editable path="Walls/Wall_12_9"]
+[editable path="Walls/Wall_12_10"]
+[editable path="Walls/Wall_12_11"]
+[editable path="Walls/Wall_12_12"]
+[editable path="Walls/Wall_13_0"]
+[editable path="Walls/Wall_13_12"]
+[editable path="Walls/Wall_14_0"]
+[editable path="Walls/Wall_14_7"]
+[editable path="Walls/Wall_14_12"]
+[editable path="Walls/Wall_15_0"]
+[editable path="Walls/Wall_15_7"]
+[editable path="Walls/Wall_15_12"]
+[editable path="Walls/Wall_16_0"]
+[editable path="Walls/Wall_16_7"]
+[editable path="Walls/Wall_16_12"]
+[editable path="Walls/Wall_17_0"]
+[editable path="Walls/Wall_17_12"]
+[editable path="Walls/Wall_18_0"]
+[editable path="Walls/Wall_18_1"]
+[editable path="Walls/Wall_18_2"]
+[editable path="Walls/Wall_18_3"]
+[editable path="Walls/Wall_18_4"]
+[editable path="Walls/Wall_18_5"]
+[editable path="Walls/Wall_18_6"]
+[editable path="Walls/Wall_18_7"]
+[editable path="Walls/Wall_18_8"]
+[editable path="Walls/Wall_18_9"]
+[editable path="Walls/Wall_18_10"]
+[editable path="Walls/Wall_18_11"]
+[editable path="Walls/Wall_18_12"]
+[editable path="PlayerSpawn/Player"]
+[editable path="Props/ExitGate"]
+[editable path="Enemies/Chaser1"]
+[editable path="Enemies/Chaser2"]
+[editable path="Enemies/Chaser3"]

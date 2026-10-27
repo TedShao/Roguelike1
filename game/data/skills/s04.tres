@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=3 format=3]
 [ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[ext_resource type="Texture2D" path="res://game/art/skills/s04.svg" id="icon"]
 [resource]
 script = ExtResource("1")
+icon = ExtResource("icon")
 skill_id = "S04"
 display_name = "来电"
 description = "可见 3 格单体魔法 8。冷却 2。"

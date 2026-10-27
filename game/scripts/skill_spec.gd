@@ -3,6 +3,7 @@ extends Resource
 
 @export var skill_id: String = "S02"
 @export var display_name: String = "甩锅"
+@export var icon: Texture2D
 @export_multiline var description: String = ""
 @export var damage: int = 6
 @export var damage_type: String = "physical"

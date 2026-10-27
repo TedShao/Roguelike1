@@ -1,0 +1,98 @@
+[gd_scene format=3]
+[ext_resource type="Script" path="res://game/scripts/skill_card.gd" id="script"]
+[ext_resource type="StyleBox" path="res://game/ui/card_normal.tres" id="normal"]
+[ext_resource type="StyleBox" path="res://game/ui/card_hover.tres" id="hover"]
+[ext_resource type="StyleBox" path="res://game/ui/card_selected.tres" id="selected"]
+[ext_resource type="Texture2D" path="res://game/art/kenney/game-icons/checkmark.png" id="check"]
+[ext_resource type="Texture2D" path="res://game/art/prototype/spark.svg" id="spark"]
+[ext_resource type="StyleBox" path="res://game/ui/focus_outline.tres" id="focus"]
+[node name="SkillCard" type="Button"]
+custom_minimum_size = Vector2(499, 96)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+toggle_mode = true
+script = ExtResource("script")
+theme_override_styles/normal = ExtResource("normal")
+theme_override_styles/hover = ExtResource("hover")
+theme_override_styles/pressed = ExtResource("selected")
+theme_override_styles/hover_pressed = ExtResource("selected")
+theme_override_styles/focus = ExtResource("focus")
+[node name="Highlight" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 16.0
+offset_bottom = 84.0
+mouse_filter = 2
+color = Color(1, 0.7, 0.25, 1)
+modulate = Color(1, 1, 1, 0)
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 72.0
+pivot_offset = Vector2(24, 24)
+texture_filter = 1
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+[node name="Title" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 12.0
+offset_right = 360.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 20
+text = "基础能力"
+mouse_filter = 2
+[node name="Description" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 42.0
+offset_right = 476.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 15
+autowrap_mode = 2
+text = "点击选择，清场后可免费重配。"
+mouse_filter = 2
+[node name="Cooldown" type="Label" parent="."]
+offset_left = 382.0
+offset_top = 13.0
+offset_right = 476.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 2
+mouse_filter = 2
+[node name="SelectedIcon" type="TextureRect" parent="."]
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 38.0
+offset_bottom = 22.0
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("check")
+mouse_filter = 2
+[node name="Selected" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 5.0
+offset_right = 80.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(1, 0.94, 0.78, 1)
+text = "已选择"
+mouse_filter = 2
+[node name="ClickParticles" type="CPUParticles2D" parent="."]
+position = Vector2(48, 48)
+emitting = false
+amount = 12
+lifetime = 0.35
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("spark")
+color = Color(1, 0.83, 0.42, 1)
+spread = 180.0
+gravity = Vector2(0, 30)
+initial_velocity_min = 24.0
+initial_velocity_max = 90.0
+scale_amount_min = 0.15
+scale_amount_max = 0.3

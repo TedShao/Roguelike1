@@ -14,6 +14,11 @@ extends Node2D
 var danger_cells: Array = []
 var target_cells: Array = []
 var hover_cell: Vector2i = Vector2i(-999, -999)
+# Derived query results only, never authored geometry or a second level layout.
+var _blocked_cache: Dictionary = {}
+
+func invalidate_navigation_cache() -> void:
+	_blocked_cache.clear()
 
 func _process(_delta: float) -> void:
 	# Editor preview redraw only; never changes a scene or resource property.
@@ -60,6 +65,13 @@ func inside_bounds(cell: Vector2i) -> bool:
 	return true
 
 func blocked(cell: Vector2i) -> bool:
+	if Engine.is_editor_hint():
+		return _blocked_from_scene(cell)
+	if not _blocked_cache.has(cell):
+		_blocked_cache[cell] = _blocked_from_scene(cell)
+	return _blocked_cache[cell]
+
+func _blocked_from_scene(cell: Vector2i) -> bool:
 	if not inside_bounds(cell):
 		return true
 	var point: Vector2 = to_global(cell_to_local(cell))
@@ -139,4 +151,5 @@ func _draw() -> void:
 		var rect := Rect2(cell_to_local(cell) - Vector2.ONE * (cell_size / 2 - 7), Vector2.ONE * (cell_size - 14))
 		draw_rect(rect, Color(0.5, 0.88, 0.8, 0.8), false, 2.0)
 	if not blocked(hover_cell):
-		draw_rect(Rect2(cell_to_local(hover_cell) - Vector2.ONE * 30, Vector2.ONE * 60), Color(0.92, 0.81, 0.59, 0.65), false, 1.0)
+		var side: float = cell_size - 6.0
+		draw_rect(Rect2(cell_to_local(hover_cell) - Vector2.ONE * side / 2.0, Vector2.ONE * side), Color(0.92, 0.81, 0.59, 0.65), false, 1.0)

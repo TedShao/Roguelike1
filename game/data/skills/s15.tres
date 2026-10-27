@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=3 format=3]
 [ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[ext_resource type="Texture2D" path="res://game/art/skills/s15.svg" id="icon"]
 [resource]
 script = ExtResource("1")
+icon = ExtResource("icon")
 skill_id = "S15"
 display_name = "护体结界"
 description = "屏障 8，覆盖本次及下一次响应。冷却 2。点击即执行。"

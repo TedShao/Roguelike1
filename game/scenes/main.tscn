@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3]
+[gd_scene format=3]
 [ext_resource type="Script" path="res://game/scripts/main.gd" id="1"]
-[ext_resource type="PackedScene" path="res://game/scenes/rooms/room_a.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://game/scenes/rooms/room_b.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://game/scenes/rooms/room_c.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://game/scenes/rooms/maze_a.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://game/scenes/rooms/maze_b.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://game/scenes/rooms/maze_c.tscn" id="4"]
 [ext_resource type="Theme" path="res://game/ui/theme.tres" id="5"]
 [ext_resource type="Resource" path="res://game/data/skills/s02.tres" id="6"]
 [ext_resource type="Resource" path="res://game/data/skills/s04.tres" id="7"]
@@ -14,13 +14,25 @@
 [ext_resource type="Resource" path="res://game/data/skills/s15.tres" id="13"]
 [ext_resource type="Resource" path="res://game/data/skills/s17.tres" id="14"]
 [ext_resource type="Resource" path="res://game/data/skills/s18.tres" id="15"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0104.tres" id="blade"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0108.tres" id="boot"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0116.tres" id="potion"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0097.tres" id="hero"]
+[ext_resource type="PackedScene" path="res://game/scenes/ui/skill_card.tscn" id="skill_card"]
+[ext_resource type="StyleBox" path="res://game/ui/parchment.tres" id="parchment"]
+[ext_resource type="StyleBox" path="res://game/ui/red_button.tres" id="red_button"]
+[ext_resource type="StyleBox" path="res://game/ui/ribbon.tres" id="ribbon"]
+[ext_resource type="Texture2D" path="res://game/art/kenney/game-icons/plus.png" id="heart"]
+[ext_resource type="Texture2D" path="res://game/art/kenney/game-icons/exclamation.png" id="pressure_icon"]
+[ext_resource type="StyleBox" path="res://game/ui/health_fill.tres" id="health_fill"]
+[ext_resource type="StyleBox" path="res://game/ui/pressure_fill.tres" id="pressure_fill"]
 [node name="Game" type="Node2D"]
 script = ExtResource("1")
 encounter_scenes = Array[PackedScene]([ExtResource("2"), ExtResource("3"), ExtResource("4")])
 skill_catalog = [ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("15")]
 [node name="RoomHost" type="Node2D" parent="."]
-position = Vector2(64, 172)
-[node name="RoomA" parent="RoomHost" instance=ExtResource("2")]
+position = Vector2(40, 128)
+[node name="MazeA" parent="RoomHost" instance=ExtResource("2")]
 [node name="HUD" type="CanvasLayer" parent="."]
 [node name="Root" type="Control" parent="HUD"]
 layout_mode = 3
@@ -30,275 +42,366 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+texture_filter = 1
 theme = ExtResource("5")
-[node name="Eyebrow" type="Label" parent="HUD/Root"]
+[node name="Header" type="Control" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 66.0
-offset_top = 25.0
-offset_right = 716.0
-offset_bottom = 49.0
-theme_override_font_sizes/font_size = 13
-text = "ROGUELIKE 1   /   第一轮战斗样片"
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 1400.0
+offset_bottom = 112.0
 mouse_filter = 2
 [node name="Title" type="Label" parent="HUD/Root"]
 unique_name_in_owner = true
 offset_left = 62.0
-offset_top = 51.0
-offset_right = 612.0
-offset_bottom = 111.0
-theme_override_font_sizes/font_size = 42
+offset_top = 35.0
+offset_right = 340.0
+offset_bottom = 81.0
 text = "众说地窟"
+theme_override_font_sizes/font_size = 32
 mouse_filter = 2
-[node name="Subtitle" type="Label" parent="HUD/Root"]
+theme_override_colors/font_color = Color(0.94, 0.80, 0.54, 1)
+[node name="Eyebrow" type="Label" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 66.0
-offset_top = 111.0
-offset_right = 626.0
-offset_bottom = 137.0
-theme_override_font_sizes/font_size = 16
-text = "在荒诞规矩里，给自己留一步。"
+offset_left = 64.0
+offset_top = 82.0
+offset_right = 400.0
+offset_bottom = 104.0
+text = "ROGUELIKE 1  /  无职业 · 自由构筑"
+theme_override_font_sizes/font_size = 12
 mouse_filter = 2
+
 [node name="Health" type="Label" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 666.0
-offset_top = 37.0
-offset_right = 911.0
+offset_left = 480.0
+offset_top = 42.0
+offset_right = 700.0
 offset_bottom = 65.0
-theme_override_font_sizes/font_size = 20
 text = "生命 30 / 30"
+theme_override_font_sizes/font_size = 18
 mouse_filter = 2
+
 [node name="HealthBar" type="ProgressBar" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 666.0
-offset_top = 74.0
-offset_right = 910.0
-offset_bottom = 81.0
+offset_left = 480.0
+offset_top = 75.0
+offset_right = 720.0
+offset_bottom = 91.0
 value = 100.0
 show_percentage = false
 mouse_filter = 2
+theme_override_styles/fill = ExtResource("health_fill")
 [node name="Pressure" type="Label" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 942.0
-offset_top = 37.0
-offset_right = 1187.0
+offset_left = 760.0
+offset_top = 42.0
+offset_right = 980.0
 offset_bottom = 65.0
-theme_override_font_sizes/font_size = 20
 text = "压力 0 / 100"
+theme_override_font_sizes/font_size = 18
 mouse_filter = 2
+
 [node name="PressureBar" type="ProgressBar" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 942.0
-offset_top = 74.0
-offset_right = 1186.0
-offset_bottom = 81.0
+offset_left = 760.0
+offset_top = 75.0
+offset_right = 1000.0
+offset_bottom = 91.0
 value = 0.0
 show_percentage = false
-self_modulate = Color(1, 0.65, 0.55, 1)
 mouse_filter = 2
+theme_override_styles/fill = ExtResource("pressure_fill")
 [node name="Turn" type="Label" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 666.0
-offset_top = 100.0
-offset_right = 1186.0
-offset_bottom = 130.0
-theme_override_font_sizes/font_size = 15
-text = "行动 00 · 屏障 0 · 敌人 2"
+offset_left = 1040.0
+offset_top = 42.0
+offset_right = 1370.0
+offset_bottom = 67.0
+text = "行动 00 · 屏障 0 · 敌人 3"
+theme_override_font_sizes/font_size = 16
 mouse_filter = 2
-[node name="Sidebar" type="PanelContainer" parent="HUD/Root"]
-unique_name_in_owner = true
-offset_left = 662.0
-offset_top = 158.0
-offset_right = 1210.0
-offset_bottom = 748.0
 
-[node name="Column" type="VBoxContainer" parent="HUD/Root/Sidebar"]
-theme_override_constants/separation = 8
-[node name="RoomTitle" type="Label" parent="HUD/Root/Sidebar/Column"]
+[node name="Subtitle" type="Label" parent="HUD/Root"]
 unique_name_in_owner = true
+offset_left = 1040.0
+offset_top = 75.0
+offset_right = 1370.0
+offset_bottom = 96.0
+text = "一步一响应 / 没有实时倒计时"
+theme_override_font_sizes/font_size = 13
+mouse_filter = 2
+
+[node name="Sidebar" type="Control" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 976.0
+offset_top = 128.0
+offset_right = 1400.0
+offset_bottom = 752.0
+
+[node name="Chapter" type="PanelContainer" parent="HUD/Root/Sidebar"]
+offset_right = 424.0
+offset_bottom = 150.0
+theme_override_styles/panel = ExtResource("parchment")
+[node name="Text" type="VBoxContainer" parent="HUD/Root/Sidebar/Chapter"]
+theme_override_constants/separation = 12
+[node name="RoomTitle" type="Label" parent="HUD/Root/Sidebar/Chapter/Text"]
+unique_name_in_owner = true
+text = "A · 众说回廊"
 theme_override_font_sizes/font_size = 23
-text = "A · 墙边展示房"
-[node name="RoomNote" type="Label" parent="HUD/Root/Sidebar/Column"]
+mouse_filter = 2
+
+theme_override_colors/font_color = Color(0.25, 0.17, 0.12, 1)
+[node name="RoomNote" type="Label" parent="HUD/Root/Sidebar/Chapter/Text"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 36)
 text = ""
-autowrap_mode = 2
 theme_override_font_sizes/font_size = 14
-[node name="Inspect" type="Label" parent="HUD/Root/Sidebar/Column"]
-unique_name_in_owner = true
+mouse_filter = 2
 custom_minimum_size = Vector2(0, 48)
-text = "查看敌人"
 autowrap_mode = 2
-theme_override_font_sizes/font_size = 14
-[node name="SkillRow" type="HBoxContainer" parent="HUD/Root/Sidebar/Column"]
-theme_override_constants/separation = 8
-[node name="Slot1" type="Button" parent="HUD/Root/Sidebar/Column/SkillRow"]
-focus_mode = 0
+theme_override_colors/font_color = Color(0.25, 0.17, 0.12, 1)
+[node name="Threat" type="PanelContainer" parent="HUD/Root/Sidebar"]
+offset_top = 166.0
+offset_right = 424.0
+offset_bottom = 294.0
+[node name="Inspect" type="Label" parent="HUD/Root/Sidebar/Threat"]
 unique_name_in_owner = true
-size_flags_horizontal = 3
-text = "基础技能"
+text = "查看敌人"
+theme_override_font_sizes/font_size = 15
+mouse_filter = 2
+custom_minimum_size = Vector2(0, 66)
+autowrap_mode = 2
+[node name="Journal" type="PanelContainer" parent="HUD/Root/Sidebar"]
+offset_top = 310.0
+offset_right = 424.0
+offset_bottom = 624.0
+[node name="Column" type="VBoxContainer" parent="HUD/Root/Sidebar/Journal"]
+theme_override_constants/separation = 6
+[node name="LogTitle" type="Label" parent="HUD/Root/Sidebar/Journal/Column"]
+unique_name_in_owner = true
+text = "行动记录"
+theme_override_font_sizes/font_size = 13
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.89, 0.72, 0.48, 1)
+[node name="CombatLog" type="RichTextLabel" parent="HUD/Root/Sidebar/Journal/Column"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
-[node name="Slot2" type="Button" parent="HUD/Root/Sidebar/Column/SkillRow"]
-focus_mode = 0
-unique_name_in_owner = true
-size_flags_horizontal = 3
-text = "基础技能"
-custom_minimum_size = Vector2(0, 42)
-[node name="ActionRow" type="HBoxContainer" parent="HUD/Root/Sidebar/Column"]
-theme_override_constants/separation = 8
-[node name="Move" type="Button" parent="HUD/Root/Sidebar/Column/ActionRow"]
-focus_mode = 0
-unique_name_in_owner = true
-size_flags_horizontal = 3
-text = "移动"
-[node name="Attack" type="Button" parent="HUD/Root/Sidebar/Column/ActionRow"]
-focus_mode = 0
-unique_name_in_owner = true
-size_flags_horizontal = 3
-text = "普通攻击"
-[node name="Wait" type="Button" parent="HUD/Root/Sidebar/Column/ActionRow"]
-focus_mode = 0
-unique_name_in_owner = true
-size_flags_horizontal = 3
-text = "空格 · 等待"
-[node name="Steady" type="Button" parent="HUD/Root/Sidebar/Column/ActionRow"]
-focus_mode = 0
-unique_name_in_owner = true
-size_flags_horizontal = 3
-text = "Q · 稳神"
-[node name="Overdrive" type="Button" parent="HUD/Root/Sidebar/Column"]
-focus_mode = 0
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 43)
-text = "R · 透支"
-[node name="CombatLog" type="RichTextLabel" parent="HUD/Root/Sidebar/Column"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 90)
 size_flags_vertical = 3
-text = ""
 scroll_following = true
-theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/normal_font_size = 13
 selection_enabled = true
-[node name="SafeRow" type="HBoxContainer" parent="HUD/Root/Sidebar/Column"]
-theme_override_constants/separation = 8
-[node name="Next" type="Button" parent="HUD/Root/Sidebar/Column/SafeRow"]
+[node name="Hint" type="Label" parent="HUD/Root/Sidebar/Journal/Column"]
 unique_name_in_owner = true
+text = "选择行动后点击目标。"
+theme_override_font_sizes/font_size = 14
+mouse_filter = 2
+custom_minimum_size = Vector2(0, 48)
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.78, 0.53, 1)
+[node name="SafeRow" type="HBoxContainer" parent="HUD/Root/Sidebar/Journal/Column"]
+unique_name_in_owner = true
+theme_override_constants/separation = 6
+[node name="Next" type="Button" parent="HUD/Root/Sidebar/Journal/Column/SafeRow"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "下一房"
 visible = false
 size_flags_horizontal = 3
-text = "下一房"
-[node name="Loadout" type="Button" parent="HUD/Root/Sidebar/Column/SafeRow"]
+[node name="Loadout" type="Button" parent="HUD/Root/Sidebar/Journal/Column/SafeRow"]
 unique_name_in_owner = true
-visible = false
+focus_mode = 0
 text = "免费重配"
-[node name="PressureEdit" type="HBoxContainer" parent="HUD/Root/Sidebar/Column"]
+visible = false
+[node name="PressureEdit" type="HBoxContainer" parent="HUD/Root/Sidebar/Journal/Column"]
 unique_name_in_owner = true
 visible = false
-theme_override_constants/separation = 8
-[node name="PressureValue" type="SpinBox" parent="HUD/Root/Sidebar/Column/PressureEdit"]
+theme_override_constants/separation = 6
+[node name="PressureValue" type="SpinBox" parent="HUD/Root/Sidebar/Journal/Column/PressureEdit"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 0)
+custom_minimum_size = Vector2(130, 0)
 max_value = 100.0
 step = 1.0
 prefix = "压力"
-[node name="LowerPressure" type="Button" parent="HUD/Root/Sidebar/Column/PressureEdit"]
+[node name="LowerPressure" type="Button" parent="HUD/Root/Sidebar/Journal/Column/PressureEdit"]
 unique_name_in_owner = true
-text = "降低至此数值"
-[node name="Restart" type="Button" parent="HUD/Root/Sidebar/Column"]
+focus_mode = 0
+text = "降低压力"
+size_flags_horizontal = 3
+[node name="Restart" type="Button" parent="HUD/Root/Sidebar/Journal/Column"]
 unique_name_in_owner = true
-text = "重新开始本轮"
-custom_minimum_size = Vector2(0, 36)
-[node name="Hint" type="Label" parent="HUD/Root"]
+focus_mode = 0
+text = "重新开始"
+custom_minimum_size = Vector2(0, 34)
+[node name="Dock" type="PanelContainer" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 64.0
-offset_top = 672.0
-offset_right = 644.0
-offset_bottom = 750.0
-theme_override_font_sizes/font_size = 15
-text = "选择行动后点击目标。"
-mouse_filter = 2
-autowrap_mode = 2
+offset_left = 40.0
+offset_top = 772.0
+offset_right = 1400.0
+offset_bottom = 864.0
+
+[node name="Actions" type="HBoxContainer" parent="HUD/Root/Dock"]
+unique_name_in_owner = true
+theme_override_constants/separation = 8
+[node name="Move" type="Button" parent="HUD/Root/Dock/Actions"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "移动"
+custom_minimum_size = Vector2(85, 66)
+size_flags_horizontal = 3
+icon = ExtResource("boot")
+expand_icon = true
+theme_override_constants/icon_max_width = 24
+[node name="Attack" type="Button" parent="HUD/Root/Dock/Actions"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "普攻"
+custom_minimum_size = Vector2(100, 66)
+size_flags_horizontal = 3
+icon = ExtResource("blade")
+expand_icon = true
+theme_override_constants/icon_max_width = 24
+[node name="Slot1" type="Button" parent="HUD/Root/Dock/Actions"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "1 · 甩锅"
+expand_icon = true
+theme_override_constants/icon_max_width = 32
+custom_minimum_size = Vector2(170, 66)
+size_flags_horizontal = 3
+[node name="Slot2" type="Button" parent="HUD/Root/Dock/Actions"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "2 · 来电"
+expand_icon = true
+theme_override_constants/icon_max_width = 32
+custom_minimum_size = Vector2(170, 66)
+size_flags_horizontal = 3
+[node name="Wait" type="Button" parent="HUD/Root/Dock/Actions"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "空格\n等待"
+custom_minimum_size = Vector2(85, 66)
+size_flags_horizontal = 3
+[node name="Steady" type="Button" parent="HUD/Root/Dock/Actions"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "Q\n稳神"
+custom_minimum_size = Vector2(85, 66)
+size_flags_horizontal = 3
+icon = ExtResource("potion")
+expand_icon = true
+theme_override_constants/icon_max_width = 24
+[node name="Overdrive" type="Button" parent="HUD/Root/Dock/Actions"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "R · 透支"
+custom_minimum_size = Vector2(330, 66)
+size_flags_horizontal = 3
 [node name="Footer" type="Label" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 64.0
-offset_top = 763.0
-offset_right = 1184.0
-offset_bottom = 786.0
+offset_left = 42.0
+offset_top = 872.0
+offset_right = 1200.0
+offset_bottom = 895.0
+text = "WASD / 方向键移动     1 / 2 技能     点击目标预览 · 再次点击执行     右键 / Esc 取消"
 theme_override_font_sizes/font_size = 13
-text = "WASD 移动  ·  1 / 2 技能  ·  右键取消  ·  无实时倒计时"
 mouse_filter = 2
+
+[node name="Credit" type="Label" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 1230.0
+offset_top = 872.0
+offset_right = 1400.0
+offset_bottom = 895.0
+text = "ART · KENNEY"
+theme_override_font_sizes/font_size = 12
+mouse_filter = 2
+horizontal_alignment = 2
+[node name="LoadoutShade" type="ColorRect" parent="HUD/Root"]
+unique_name_in_owner = true
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1440.0
+offset_bottom = 900.0
+visible = false
+z_index = 9
+color = Color(0.03, 0.025, 0.05, 0.88)
 [node name="LoadoutPanel" type="PanelContainer" parent="HUD/Root"]
 unique_name_in_owner = true
-offset_left = 220.0
-offset_top = 166.0
-offset_right = 1060.0
-offset_bottom = 626.0
 visible = false
 z_index = 10
+offset_left = 190.0
+offset_top = 64.0
+offset_right = 1250.0
+offset_bottom = 836.0
+theme_override_styles/panel = ExtResource("parchment")
 [node name="Content" type="VBoxContainer" parent="HUD/Root/LoadoutPanel"]
-theme_override_constants/separation = 14
-[node name="PickerTitle" type="Label" parent="HUD/Root/LoadoutPanel/Content"]
-text = "从白板开始"
-theme_override_font_sizes/font_size = 30
+theme_override_constants/separation = 12
+[node name="Ribbon" type="PanelContainer" parent="HUD/Root/LoadoutPanel/Content"]
+custom_minimum_size = Vector2(0, 66)
+theme_override_styles/panel = ExtResource("ribbon")
+[node name="PickerTitle" type="Label" parent="HUD/Root/LoadoutPanel/Content/Ribbon"]
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 0.96, 0.84, 1)
+text = "能力图鉴 · 从白板开始"
+horizontal_alignment = 1
+vertical_alignment = 1
 [node name="PickerHint" type="Label" parent="HUD/Root/LoadoutPanel/Content"]
 unique_name_in_owner = true
-text = "选择两项基础技能"
-autowrap_mode = 2
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 32)
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.32, 0.22, 0.14, 1)
+text = "点击卡片选择两项能力 · 再次点击取消"
+horizontal_alignment = 1
 [node name="Choices" type="GridContainer" parent="HUD/Root/LoadoutPanel/Content"]
 unique_name_in_owner = true
 columns = 2
+size_flags_vertical = 3
 theme_override_constants/h_separation = 14
-theme_override_constants/v_separation = 8
-[node name="S02" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "甩锅"
-tooltip_text = "相邻物理 6，推 2 格；遇阻碰撞 4。冷却 2。"
-[node name="S04" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "来电"
-tooltip_text = "可见 3 格单体魔法 8。冷却 2。"
-[node name="S05" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "开溜"
-tooltip_text = "沿空格路径移动最多 2 格，落点须可见。冷却 2。"
-[node name="S06" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "硬撑"
-tooltip_text = "本次响应每次敌方伤害减 6。冷却 2。点击即执行。"
-[node name="S09" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "横扫"
-tooltip_text = "选择相邻方向：前方三格各物理 6。冷却 2。"
-[node name="S10" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "突刺"
-tooltip_text = "直线 2 格内，接近目标后物理 7。冷却 2。"
-[node name="S13" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "法刃"
-tooltip_text = "相邻单体魔法 9。冷却 1。"
-[node name="S15" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "护体结界"
-tooltip_text = "屏障 8，覆盖本次及下一次响应。冷却 2。点击即执行。"
-[node name="S17" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "影袭"
-tooltip_text = "选 3 格内可见敌人，再选其相邻落点；路径≤4，物理 7。冷却 3。"
-[node name="S18" type="CheckButton" parent="HUD/Root/LoadoutPanel/Content/Choices"]
-custom_minimum_size = Vector2(380, 42)
-size_flags_horizontal = 3
-text = "处决击"
-tooltip_text = "相邻物理 7，目标≤40%生命时伤害+50%。冷却 2。"
+theme_override_constants/v_separation = 10
+[node name="S02" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("6")
+[node name="S04" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("7")
+[node name="S05" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("8")
+[node name="S06" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("9")
+[node name="S09" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("10")
+[node name="S10" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("11")
+[node name="S13" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("12")
+[node name="S15" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("13")
+[node name="S17" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("14")
+[node name="S18" parent="HUD/Root/LoadoutPanel/Content/Choices" instance=ExtResource("skill_card")]
+skill = ExtResource("15")
 [node name="ApplyLoadout" type="Button" parent="HUD/Root/LoadoutPanel/Content"]
 unique_name_in_owner = true
-text = "以这两项能力出发"
-custom_minimum_size = Vector2(0, 36)
+focus_mode = 0
+custom_minimum_size = Vector2(0, 52)
+theme_override_styles/normal = ExtResource("red_button")
+text = "带上这两项能力，进入地窟"
+theme_override_font_sizes/font_size = 18
+[node name="HealthIcon" type="TextureRect" parent="HUD/Root"]
+offset_left = 446.0
+offset_top = 42.0
+offset_right = 468.0
+offset_bottom = 64.0
+texture = ExtResource("heart")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+modulate = Color(0.94, 0.78, 0.51, 1)
+[node name="PressureIcon" type="TextureRect" parent="HUD/Root"]
+offset_left = 726.0
+offset_top = 42.0
+offset_right = 748.0
+offset_bottom = 64.0
+texture = ExtResource("pressure_icon")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+modulate = Color(0.94, 0.78, 0.51, 1)

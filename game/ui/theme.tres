@@ -1,83 +1,99 @@
-[gd_resource type="Theme" format=3 uid="uid://b2qg3uc8br227"]
-
-[sub_resource type="StyleBoxFlat" id="Normal"]
-content_margin_left = 14.0
-content_margin_top = 9.0
-content_margin_right = 14.0
-content_margin_bottom = 9.0
-bg_color = Color(0.1, 0.15, 0.17, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.28, 0.37, 0.38, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="Hover"]
-content_margin_left = 14.0
-content_margin_top = 9.0
-content_margin_right = 14.0
-content_margin_bottom = 9.0
-bg_color = Color(0.15, 0.24, 0.25, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.67, 0.76, 0.65, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="Panel"]
-content_margin_left = 22.0
-content_margin_top = 18.0
-content_margin_right = 22.0
-content_margin_bottom = 18.0
-bg_color = Color(0.055, 0.085, 0.1, 0.98)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.23, 0.3, 0.32, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
+[gd_resource type="Theme" format=3]
+[ext_resource type="Texture2D" path="res://game/art/kenney/pixel-adventure/tile_0008.png" id="t8"]
+[ext_resource type="Texture2D" path="res://game/art/kenney/pixel-adventure/tile_0009.png" id="t9"]
+[ext_resource type="Texture2D" path="res://game/art/kenney/pixel-adventure/tile_0016.png" id="t16"]
+[ext_resource type="Texture2D" path="res://game/art/kenney/pixel-adventure/tile_0019.png" id="t19"]
+[ext_resource type="Texture2D" path="res://game/art/kenney/pixel-adventure/tile_0021.png" id="t21"]
+[ext_resource type="Texture2D" path="res://game/art/kenney/pixel-adventure/tile_0022.png" id="t22"]
+[ext_resource type="StyleBox" path="res://game/ui/wood_panel.tres" id="wood_panel"]
+[ext_resource type="StyleBox" path="res://game/ui/wood_button.tres" id="wood_button"]
+[ext_resource type="StyleBox" path="res://game/ui/wood_hover.tres" id="wood_hover"]
+[ext_resource type="StyleBox" path="res://game/ui/red_button.tres" id="red_button"]
+[ext_resource type="StyleBox" path="res://game/ui/focus_outline.tres" id="focus"]
+[sub_resource type="StyleBoxTexture" id="Normal"]
+texture = ExtResource("t8")
+modulate_color = Color(1, 1, 1, 1)
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+[sub_resource type="StyleBoxTexture" id="Hover"]
+texture = ExtResource("t22")
+modulate_color = Color(1, 1, 1, 1)
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+[sub_resource type="StyleBoxTexture" id="Pressed"]
+texture = ExtResource("t21")
+modulate_color = Color(1, 1, 1, 1)
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+[sub_resource type="StyleBoxTexture" id="Panel"]
+texture = ExtResource("t9")
+modulate_color = Color(1, 1, 1, 1)
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+[sub_resource type="StyleBoxTexture" id="Disabled"]
+texture = ExtResource("t8")
+modulate_color = Color(0.58, 0.58, 0.65, 1)
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
 [sub_resource type="StyleBoxFlat" id="Track"]
-bg_color = Color(0.12, 0.16, 0.18, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
+bg_color = Color(0.08, 0.075, 0.12, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.37, 0.37, 0.46, 1)
 [sub_resource type="StyleBoxFlat" id="Fill"]
-bg_color = Color(0.48, 0.75, 0.65, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
+bg_color = Color(0.8, 0.34, 0.32, 1)
 [sub_resource type="SystemFont" id="Font"]
 font_names = PackedStringArray("Heiti SC", "Microsoft YaHei", "Noto Sans CJK SC", "Hiragino Sans GB")
-
 [resource]
 default_font = SubResource("Font")
 default_font_size = 16
-Button/colors/font_color = Color(0.9, 0.87, 0.77, 1)
-Button/colors/font_disabled_color = Color(0.4, 0.47, 0.47, 1)
-Button/styles/disabled = SubResource("Normal")
-Button/styles/hover = SubResource("Hover")
-Button/styles/normal = SubResource("Normal")
-Button/styles/pressed = SubResource("Hover")
-CheckButton/styles/hover = SubResource("Hover")
-CheckButton/styles/normal = SubResource("Normal")
-CheckButton/styles/pressed = SubResource("Hover")
-Label/colors/font_color = Color(0.84, 0.86, 0.8, 1)
-PanelContainer/styles/panel = SubResource("Panel")
+Button/colors/font_color = Color(0.95, 0.90, 0.78, 1)
+Button/colors/font_hover_color = Color(0.25, 0.17, 0.12, 1)
+Button/colors/font_pressed_color = Color(1, 0.96, 0.84, 1)
+Button/colors/font_disabled_color = Color(0.53, 0.53, 0.6, 1)
+Button/styles/disabled = ExtResource("wood_panel")
+Button/styles/hover = ExtResource("wood_hover")
+Button/styles/normal = ExtResource("wood_button")
+Button/styles/pressed = ExtResource("red_button")
+Button/styles/focus = ExtResource("focus")
+CheckButton/styles/hover = ExtResource("wood_hover")
+CheckButton/styles/normal = ExtResource("wood_button")
+CheckButton/styles/pressed = ExtResource("red_button")
+CheckButton/colors/font_pressed_color = Color(1, 0.96, 0.84, 1)
+Label/colors/font_color = Color(0.88, 0.87, 0.85, 1)
+RichTextLabel/colors/default_color = Color(0.7, 0.73, 0.8, 1)
+PanelContainer/styles/panel = ExtResource("wood_panel")
 ProgressBar/styles/background = SubResource("Track")
 ProgressBar/styles/fill = SubResource("Fill")

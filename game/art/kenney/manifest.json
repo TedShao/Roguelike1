@@ -1,0 +1,173 @@
+{
+  "retrieved": "2026-10-27",
+  "license": "CC0-1.0",
+  "sources": [
+    {
+      "name": "Tiny Dungeon",
+      "version": "1.0 (bundled license)",
+      "url": "https://kenney.nl/assets/tiny-dungeon",
+      "archive_sha256": "c109438ab06f65fd80f9b2686a4cf9c7c11dc64444b47333ec71d602f8bb5fc7"
+    },
+    {
+      "name": "UI Pack Pixel Adventure",
+      "version": "2.0 (bundled license; webpage displayed 1.0)",
+      "url": "https://kenney.nl/assets/ui-pack-pixel-adventure",
+      "archive_sha256": "0b0ed4802ebcfff5e44e370f394baa1d751862a5a4a7612ac4ce84e85faa0627"
+    },
+    {
+      "name": "adventure",
+      "version": "see bundled License.txt",
+      "url": "https://kenney.nl/assets/ui-pack-adventure",
+      "archive_sha256": "982e8ab66842509ee9214f9c2038e594cbe029f19d1dc177fecaad3b41a67ed3"
+    },
+    {
+      "name": "game-icons",
+      "version": "see bundled License.txt",
+      "url": "https://kenney.nl/assets/game-icons",
+      "archive_sha256": "7a86d8d58e0b851e22004b3c70bf90b003632bbf9ac633424daa3bb17d9e7e4e"
+    },
+    {
+      "name": "1-Bit Pack",
+      "version": "1.0",
+      "url": "https://kenney.nl/assets/1-bit-pack",
+      "archive_sha256": "129a0e74e1dc9091a769d5118be5c88780484c7a3771ee33ac9ef0df02583a9a"
+    }
+  ],
+  "files": [
+    {
+      "path": "game/art/kenney/adventure/License.txt",
+      "sha256": "593b79956190ca70b37ce5d0d1c71dd4b5fb4027d4d1d29a91814e950a36e6bd"
+    },
+    {
+      "path": "game/art/kenney/adventure/banner_classic_curtain.png",
+      "sha256": "e79862a8197a0d19acb90be9b7eb1c33e67e13acaca2bac65878cecacfc0e5ea"
+    },
+    {
+      "path": "game/art/kenney/adventure/button_brown.png",
+      "sha256": "ee6d0103b23c877d28296a3fb620b5cdb340dd2c798134a7ea6317d5467d5053"
+    },
+    {
+      "path": "game/art/kenney/adventure/button_red.png",
+      "sha256": "7305fb0dda92ebfa206bc893806b2f637b1b25e51a61faaa7f6c79cf178a9ac7"
+    },
+    {
+      "path": "game/art/kenney/adventure/minimap_icon_jewel_yellow.png",
+      "sha256": "9cf7787780ec2f967a78c4addea500bcc069f0670efdd53d775115ef02de16ba"
+    },
+    {
+      "path": "game/art/kenney/adventure/panel_border_brown.png",
+      "sha256": "77c6adf4735ea7cfcfb87df4396a90fba6ea47cdca3dceb79c872af04d113d04"
+    },
+    {
+      "path": "game/art/kenney/adventure/panel_brown_corners_a.png",
+      "sha256": "809ef1cdc355cebce955feb1e235f35e61237146c0fc8ef2158bae531e09b85f"
+    },
+    {
+      "path": "game/art/kenney/adventure/panel_brown_damaged.png",
+      "sha256": "b97b79fe14fd61ce02476288b36e8e199c64a2394182baefd8ea89be0f08b608"
+    },
+    {
+      "path": "game/art/kenney/adventure/panel_brown_dark.png",
+      "sha256": "929c6cb3c63554919672219febd78483f9ba58a11b0def6badb47f9cdc4e029e"
+    },
+    {
+      "path": "game/art/kenney/adventure/panel_brown_dark_corners_a.png",
+      "sha256": "c4f36240361012c810ccaa9de803654e1597dfd3d59b685dedc7d0ad01296483"
+    },
+    {
+      "path": "game/art/kenney/adventure/progress_blue_border.png",
+      "sha256": "fc6ba1af4061a4c159bfb7d12640396c5d44f8e8574c942617351e04d631a4b8"
+    },
+    {
+      "path": "game/art/kenney/adventure/progress_red.png",
+      "sha256": "87fbc89029e159c282327badad2700ef98971bd40700084f9386677798d003b6"
+    },
+    {
+      "path": "game/art/kenney/adventure/progress_red_border.png",
+      "sha256": "be9b54ce850f7273c8f4f15893bfe2a0fb8ca757cbeed9f20be3ad210d860459"
+    },
+    {
+      "path": "game/art/kenney/adventure/round_brown.png",
+      "sha256": "fc7c5ada84b1171732378f8770f9ec294c8187496433ce2009130950b48f30f9"
+    },
+    {
+      "path": "game/art/kenney/adventure/round_brown_dark.png",
+      "sha256": "e8339701c0c4f2fbcc1f829373123950ad1d4da3bc79d32ea24c750a227ad48b"
+    },
+    {
+      "path": "game/art/kenney/game-icons/License.txt",
+      "sha256": "68a86b3a620be3366d6dc28a4a8ffb8d5de12e0b86b5199c86e51fc617e29a49"
+    },
+    {
+      "path": "game/art/kenney/game-icons/arrowRight.png",
+      "sha256": "2290b5633ee4848a6df1db3da44b13143340346bb6830d44309b699039d2a932"
+    },
+    {
+      "path": "game/art/kenney/game-icons/checkmark.png",
+      "sha256": "edc47b1d6cc81aadaa74a18bccebfa30871fdb37d042414a59a3d83cc8144316"
+    },
+    {
+      "path": "game/art/kenney/game-icons/cross.png",
+      "sha256": "211fd13fd059d2c7af30dac78421dd8fa4e984da6e760db73303b60de61b254c"
+    },
+    {
+      "path": "game/art/kenney/game-icons/exclamation.png",
+      "sha256": "8ae011642849f22096829d02c137a2ae612235b2a7caeaf30044d0ddeb741b07"
+    },
+    {
+      "path": "game/art/kenney/game-icons/plus.png",
+      "sha256": "bc2785994df76b5caec6ab2a4ee3ad5aeb095250d3b92b6c79a8def7c04a6773"
+    },
+    {
+      "path": "game/art/kenney/one-bit/License.txt",
+      "sha256": "d861f208cd550a54e6e59be553ef6ac93a84f4a2966d0371d21331b70e54f33d"
+    },
+    {
+      "path": "game/art/kenney/one-bit/monochrome-transparent_packed.png",
+      "sha256": "0d9abf9b812a441e1673bc166d61abb6236c0bc46b3775700bd4d4364ba170e0"
+    },
+    {
+      "path": "game/art/kenney/pixel-adventure/License.txt",
+      "sha256": "ab0032cce635dfd1c71b4ba16513b2777cb560d6b93d52265bb0731491a41dbc"
+    },
+    {
+      "path": "game/art/kenney/pixel-adventure/tile_0008.png",
+      "sha256": "1c31c70059b4a96e77f9338e757a65f8d27f270a99e4c4e4583d701d73d964d8"
+    },
+    {
+      "path": "game/art/kenney/pixel-adventure/tile_0009.png",
+      "sha256": "07c444d7f389f8c09052af90ab460f40b643100cf5b91b19060748eb2ab7cb89"
+    },
+    {
+      "path": "game/art/kenney/pixel-adventure/tile_0016.png",
+      "sha256": "d149c30d62ac9e73504d8391317ec633cbb9650fdd59188a4702b793fdebea69"
+    },
+    {
+      "path": "game/art/kenney/pixel-adventure/tile_0019.png",
+      "sha256": "81b090629f720a3b8ef1e080e36694f2493d69c026957b9b4dab7acd9b6f73c6"
+    },
+    {
+      "path": "game/art/kenney/pixel-adventure/tile_0021.png",
+      "sha256": "7b57d307099e256fed4e14bc62ae2a83e75d9f208c981695f20919915cb41c5d"
+    },
+    {
+      "path": "game/art/kenney/pixel-adventure/tile_0022.png",
+      "sha256": "b86567aa265b19097c83aeb33722bbfd37a1846da6100f3dc3fa605edcc274cb"
+    },
+    {
+      "path": "game/art/kenney/tiny-dungeon/License.txt",
+      "sha256": "9f574a2f1f636a3db8a0665ba90212f34e2b5e61ecb533d77c05237766374111"
+    },
+    {
+      "path": "game/art/kenney/tiny-dungeon/tilemap_packed.png",
+      "sha256": "d24e60a41e4ac7a745c0304dfde121143688557f40215f23221c29cfe683825f"
+    }
+  ],
+  "contract": {
+    "native_tile": "16x16",
+    "scene_cell": "48x48; integer 3x sprite scale",
+    "filter": "nearest; no mipmaps",
+    "palette": "native slate stone, ochre floor tinted in scene, emerald lamps, ivory text",
+    "originals": "unmodified PNG and License.txt; old SVGs retained"
+  }
+}

@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3]
 [ext_resource type="Script" path="res://game/scripts/battle_actor.gd" id="1"]
-[ext_resource type="Texture2D" path="res://game/art/prototype/speaker.svg" id="2"]
+[ext_resource type="Texture2D" path="res://game/art/atlas/tile_0084.tres" id="2"]
 [ext_resource type="Texture2D" path="res://game/art/prototype/spark.svg" id="3"]
 [ext_resource type="Theme" path="res://game/ui/theme.tres" id="4"]
 [ext_resource type="Resource" path="res://game/data/enemies/speaker.tres" id="5"]
 
 [sub_resource type="RectangleShape2D" id="Selection"]
 resource_local_to_scene = true
-size = Vector2(52, 58)
+size = Vector2(40, 44)
 [sub_resource type="Animation" id="Reset"]
 resource_name = "RESET"
 length = 0.001
@@ -42,9 +42,15 @@ _data = {"RESET": SubResource("Reset"), "idle": SubResource("Idle"), "hit": SubR
 script = ExtResource("1")
 enemy_spec = ExtResource("5")
 
+[node name="Shadow" type="Polygon2D" parent="."]
+position = Vector2(0, 17)
+polygon = PackedVector2Array(-16, -4, -11, -8, 11, -8, 16, -4, 11, 2, -11, 2)
+color = Color(0.08, 0.07, 0.12, 0.5)
 [node name="Feedback" type="Node2D" parent="."]
 [node name="Sprite2D" type="Sprite2D" parent="Feedback"]
 texture = ExtResource("2")
+texture_filter = 1
+scale = Vector2(3, 3)
 [node name="SelectionArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
@@ -52,15 +58,15 @@ collision_mask = 0
 shape = SubResource("Selection")
 [node name="Vitals" type="Label" parent="."]
 offset_left = -52.0
-offset_top = -46.0
+offset_top = -36.0
 offset_right = 52.0
-offset_bottom = -26.0
+offset_bottom = -18.0
 theme = ExtResource("4")
 theme_override_colors/font_color = Color(0.96, 0.87, 0.65, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "12"
 horizontal_alignment = 1
 mouse_filter = 2

@@ -35,15 +35,12 @@ func _ready() -> void:
 	%ApplyLoadout.pressed.connect(apply_loadout)
 	%LowerPressure.pressed.connect(lower_pressure)
 	for choice in %Choices.get_children():
-		for spec in skill_catalog:
-			if spec.skill_id == String(choice.name):
-				choice.text = spec.display_name
-				choice.tooltip_text = spec.description
 		choice.toggled.connect(func(_value): update_picker())
 	bind_room()
 	show_loadout()
 
 func bind_room(carry: Dictionary = {}) -> void:
+	room.invalidate_navigation_cache()
 	var errors: PackedStringArray = room.validation_errors()
 	if not errors.is_empty():
 		busy = true
@@ -79,25 +76,26 @@ func refresh() -> void:
 	%PressureBar.value = model.pressure
 	%Turn.text = "行动 %02d   ·   屏障 %d   ·   敌人 %d" % [model.turn, model.shield, model.living_count()]
 	if model.active_left > 0:
-		%Overdrive.text = "透支生效 %d 回合  ·  双倍输出 / 承伤" % model.active_left
+		%Overdrive.text = "透支生效 %d 回合\n双倍输出 / 双倍承伤" % model.active_left
 	elif model.overdrive_cd > 0:
 		%Overdrive.text = "透支冷却  %d 回合" % model.overdrive_cd
 	else:
-		%Overdrive.text = "✓ 下次行动开启透支" if armed else "R  透支 · 持续 %d / 随后冷却 %d" % [model.rules.overdrive_duration, model.rules.overdrive_cooldown]
+		%Overdrive.text = "✓ 下次行动开启透支\n双倍输出 / 双倍承伤" if armed else "R · 透支\n持续 %d 回合 / 随后冷却 %d" % [model.rules.overdrive_duration, model.rules.overdrive_cooldown]
 	%Overdrive.disabled = busy or model.outcome != "playing" or model.active_left > 0 or model.overdrive_cd > 0
 	for index in range(2):
 		var button: Button = %Slot1 if index == 0 else %Slot2
 		var spec: SkillSpec = model.skills[loadout[index]]
 		var cd: int = model.cooldowns.get(spec.skill_id, 0)
-		button.text = "%d  %s%s" % [index + 1, spec.display_name, " · 冷却 %d" % cd if cd > 0 else ""]
+		button.text = "%d · %s\n%s" % [index + 1, spec.display_name, "冷却 %d 回合" % cd if cd > 0 else "可用"]
 		button.tooltip_text = spec.description
+		button.icon = spec.icon
 		button.disabled = busy or model.outcome != "playing" or cd > 0
 	for button in [%Move, %Attack, %Wait, %Steady]:
 		button.disabled = busy or model.outcome != "playing"
 	%Restart.disabled = busy
 	%Next.visible = model.outcome == "cleared"
 	%Next.disabled = busy or room_index + 1 >= encounter_scenes.size()
-	%Next.text = "三房战斗样片完成" if room_index + 1 >= encounter_scenes.size() else "前往下一间固定房"
+	%Next.text = "本轮探索完成" if room_index + 1 >= encounter_scenes.size() else "前往下一地牢"
 	%Loadout.visible = model.outcome == "cleared"
 	%PressureEdit.visible = model.outcome == "cleared"
 	%PressureValue.max_value = model.pressure
@@ -274,6 +272,9 @@ func board_click(point: Vector2) -> void:
 	%Hint.text = "预览：直接伤害 %d · 行动后压力 %d%s\n再次点击同一位置执行；右键 / Esc 取消。" % [preview.damage, preview.pressure, " · 将超载损失 %d 生命" % model.rules.overload_damage if preview.overload else ""]
 
 func append_log(line: String) -> void:
+	line = line.replace("basic →", "普攻 →")
+	for spec in skill_catalog:
+		line = line.replace(spec.skill_id + " →", spec.display_name + " →")
 	log_lines.append(line)
 	while log_lines.size() > 45:
 		log_lines.remove_at(0)
@@ -286,7 +287,9 @@ func show_loadout() -> void:
 		return
 	for choice in %Choices.get_children():
 		choice.set_pressed_no_signal(String(choice.name) in loadout)
+		choice.update_selection()
 	%LoadoutPanel.show()
+	%LoadoutShade.show()
 	update_picker()
 
 func update_picker() -> void:
@@ -294,7 +297,7 @@ func update_picker() -> void:
 	for choice in %Choices.get_children():
 		if choice.button_pressed:
 			count += 1
-	%PickerHint.text = "选择两项基础技能  %d / 2。其余成长与符文系统在下一阶段接入。" % count
+	%PickerHint.text = "已选择 %d / 2   ·   点击卡片选择，再次点击取消   ·   清场后可免费重配" % count
 	%ApplyLoadout.disabled = count != 2
 
 func apply_loadout() -> void:
@@ -310,6 +313,7 @@ func apply_loadout() -> void:
 	for id in loadout:
 		model.cooldowns[id] = 0
 	%LoadoutPanel.hide()
+	%LoadoutShade.hide()
 	selected = "move"
 	refresh()
 

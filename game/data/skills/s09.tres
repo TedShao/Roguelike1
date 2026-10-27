@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="SkillSpec" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SkillSpec" load_steps=3 format=3]
 [ext_resource type="Script" path="res://game/scripts/skill_spec.gd" id="1"]
+[ext_resource type="Texture2D" path="res://game/art/skills/s09.svg" id="icon"]
 [resource]
 script = ExtResource("1")
+icon = ExtResource("icon")
 skill_id = "S09"
 display_name = "横扫"
 description = "选择相邻方向：前方三格各物理 6。冷却 2。"
